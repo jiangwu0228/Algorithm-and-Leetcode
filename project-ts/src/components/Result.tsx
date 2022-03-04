@@ -199,18 +199,64 @@ function Result() {
   //   return n < 1 ? [] : [n, ...countdown(n - 1)];
   // }
   //413. Arithmetic Slices
-  function numberOfArithmeticSlices(nums: number[]): number {
-    //Given an integer array nums, return the number of arithmetic subarrays of nums.
-    let count = 0;
-    const dp = new Array(nums.length).fill(0);
-    for (let i = 2; i < nums.length; i++) {
-      if (nums[i] - nums[i - 1] === nums[i - 1] - nums[i - 2]) {
-        dp[i] = dp[i - 1] + 1;
-        count += dp[i];
-      }
-    }
-    return count;
-  }
+  // function numberOfArithmeticSlices(nums: number[]): number {
+  //   //Given an integer array nums, return the number of arithmetic subarrays of nums.
+  //   let count = 0;
+  //   const dp = new Array(nums.length).fill(0);
+  //   for (let i = 2; i < nums.length; i++) {
+  //     if (nums[i] - nums[i - 1] === nums[i - 1] - nums[i - 2]) {
+  //       dp[i] = dp[i - 1] + 1;
+  //       count += dp[i];
+  //     }
+  //   }
+  //   return count;
+  // }
+
+  //2. Add Two Numbers
+  /**
+   * Definition for singly-linked list.
+   * class ListNode {
+   *     val: number
+   *     next: ListNode | null
+   *     constructor(val?: number, next?: ListNode | null) {
+   *         this.val = (val===undefined ? 0 : val)
+   *         this.next = (next===undefined ? null : next)
+   *     }
+   * }
+   */
+
+  // class ListNode {
+  //   val: number;
+  //   next: ListNode | null;
+  //   constructor(val?: number, next?: ListNode | null) {
+  //     this.val = val === undefined ? 0 : val;
+  //     this.next = next === undefined ? null : next;
+  //   }
+  // }
+
+  // function addTwoNumbers(
+  //   l1: ListNode | null,
+  //   l2: ListNode | null
+  // ): ListNode | null {
+  //   let result = new ListNode(0);
+  //   let current = result;
+  //   let carry = 0;
+  //   while (l1 || l2 || carry) {
+  //     let sum = carry;
+  //     if (l1) {
+  //       sum += l1.val;
+  //       l1 = l1.next;
+  //     }
+  //     if (l2) {
+  //       sum += l2.val;
+  //       l2 = l2.next;
+  //     }
+  //     carry = Math.floor(sum / 10);
+  //     current.next = new ListNode(sum % 10);
+  //     current = current.next;
+  //   }
+  //   return result.next;
+  // }
 
   return (
     <iframe
