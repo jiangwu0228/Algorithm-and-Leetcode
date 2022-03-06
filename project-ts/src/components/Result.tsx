@@ -257,17 +257,79 @@ function Result() {
   //   }
   //   return result.next;
   // }
+  //799. Champagne Tower
+  function champagneTower(
+    poured: number,
+    query_row: number,
+    query_glass: number
+  ): number {
+    // let arr = new Array(query_row + 1).fill(0);
+    // arr[0] = poured;
+    // for (let i = 0; i < query_row; i++) {
+    //   for (let j = 0; j <= i; j++) {
+    //     let q = Math.floor((arr[j] - 1) / 2);
+    //     if (q > 0) {
+    //       arr[j] = 1;
+    //       arr[j + 1] += q;
+    //     }
+    //   }
+    // }
+    // return arr[query_glass] - 1;
+
+    // let dp = new Array(query_row + 1).fill(0).map(() => new Array(query_row + 1).fill(0));
+    // dp[0][0] = poured;
+    // for (let i = 0; i < query_row; i++) {
+    //   for (let j = 0; j <= i; j++) {
+    //     let q = Math.floor((dp[i][j] - 1) / 2);
+    //     if (q > 0) {
+    //       dp[i + 1][j] += q;
+    //       dp[i + 1][j + 1] += q;
+    //     }
+    //   }
+    // }
+    // return Math.min(1, dp[query_row][query_glass]);
+
+    let dp = new Array(query_row + 1)
+      .fill(0)
+      .map((_) => new Array(query_row + 1));
+
+    dp[0][0] = poured;
+    for (let r = 1; r <= query_row; r++) {
+      dp[r][0] = Math.max(dp[r - 1][0] - 1, 0) / 2;
+      dp[r][r] = Math.max(dp[r - 1][r - 1] - 1, 0) / 2;
+      for (let j = 1; j < r; j++) {
+        let left = Math.max(dp[r - 1][j - 1] - 1, 0) / 2;
+        let right = Math.max(dp[r - 1][j] - 1, 0) / 2;
+        dp[r][j] = left + right;
+      }
+    }
+    return Math.min(dp[query_row][query_glass], 1);
+  }
 
   return (
-    <iframe
-      width="879"
-      height="500"
-      src="https://www.youtube.com/embed/CTnSrpUo3wQ"
-      title="YouTube video player"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    ></iframe>
+    <>
+      <iframe
+        width="879"
+        height="500"
+        src="//player.bilibili.com/player.html?aid=926582470&bvid=BV1DT4y1j7H6&cid=217176398&page=1"
+        scrolling="no"
+        // border="0"
+        frameBorder="0"
+        // frameSpacing="0"
+        allowFullScreen
+      >
+        {" "}
+      </iframe>
+      <iframe
+        width="879"
+        height="500"
+        src="https://www.youtube.com/embed/CTnSrpUo3wQ"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    </>
   );
 }
 
