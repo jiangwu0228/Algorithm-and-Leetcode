@@ -258,52 +258,99 @@ function Result() {
   //   return result.next;
   // }
   //799. Champagne Tower
-  function champagneTower(
-    poured: number,
-    query_row: number,
-    query_glass: number
-  ): number {
-    // let arr = new Array(query_row + 1).fill(0);
-    // arr[0] = poured;
-    // for (let i = 0; i < query_row; i++) {
-    //   for (let j = 0; j <= i; j++) {
-    //     let q = Math.floor((arr[j] - 1) / 2);
-    //     if (q > 0) {
-    //       arr[j] = 1;
-    //       arr[j + 1] += q;
-    //     }
-    //   }
-    // }
-    // return arr[query_glass] - 1;
+  // function champagneTower(
+  //   poured: number,
+  //   query_row: number,
+  //   query_glass: number
+  // ): number {
+  // let arr = new Array(query_row + 1).fill(0);
+  // arr[0] = poured;
+  // for (let i = 0; i < query_row; i++) {
+  //   for (let j = 0; j <= i; j++) {
+  //     let q = Math.floor((arr[j] - 1) / 2);
+  //     if (q > 0) {
+  //       arr[j] = 1;
+  //       arr[j + 1] += q;
+  //     }
+  //   }
+  // }
+  // return arr[query_glass] - 1;
 
-    // let dp = new Array(query_row + 1).fill(0).map(() => new Array(query_row + 1).fill(0));
-    // dp[0][0] = poured;
-    // for (let i = 0; i < query_row; i++) {
-    //   for (let j = 0; j <= i; j++) {
-    //     let q = Math.floor((dp[i][j] - 1) / 2);
-    //     if (q > 0) {
-    //       dp[i + 1][j] += q;
-    //       dp[i + 1][j + 1] += q;
-    //     }
-    //   }
-    // }
-    // return Math.min(1, dp[query_row][query_glass]);
+  // let dp = new Array(query_row + 1).fill(0).map(() => new Array(query_row + 1).fill(0));
+  // dp[0][0] = poured;
+  // for (let i = 0; i < query_row; i++) {
+  //   for (let j = 0; j <= i; j++) {
+  //     let q = Math.floor((dp[i][j] - 1) / 2);
+  //     if (q > 0) {
+  //       dp[i + 1][j] += q;
+  //       dp[i + 1][j + 1] += q;
+  //     }
+  //   }
+  // }
+  // return Math.min(1, dp[query_row][query_glass]);
 
-    let dp = new Array(query_row + 1)
-      .fill(0)
-      .map((_) => new Array(query_row + 1));
+  // let dp = new Array(query_row + 1)
+  //   .fill(0)
+  //   .map((_) => new Array(query_row + 1));
 
-    dp[0][0] = poured;
-    for (let r = 1; r <= query_row; r++) {
-      dp[r][0] = Math.max(dp[r - 1][0] - 1, 0) / 2;
-      dp[r][r] = Math.max(dp[r - 1][r - 1] - 1, 0) / 2;
-      for (let j = 1; j < r; j++) {
-        let left = Math.max(dp[r - 1][j - 1] - 1, 0) / 2;
-        let right = Math.max(dp[r - 1][j] - 1, 0) / 2;
-        dp[r][j] = left + right;
-      }
+  // dp[0][0] = poured;
+  // for (let r = 1; r <= query_row; r++) {
+  //   dp[r][0] = Math.max(dp[r - 1][0] - 1, 0) / 2;
+  //   dp[r][r] = Math.max(dp[r - 1][r - 1] - 1, 0) / 2;
+  //   for (let j = 1; j < r; j++) {
+  //     let left = Math.max(dp[r - 1][j - 1] - 1, 0) / 2;
+  //     let right = Math.max(dp[r - 1][j] - 1, 0) / 2;
+  //     dp[r][j] = left + right;
+  //   }
+  // }
+  // return Math.min(dp[query_row][query_glass], 1);
+  // }
+
+  // 1359. Count All Valid Pickup and Delivery Options
+  // function countOrders(n: number): number {
+  //   let dp = new Array(n + 1).fill(0);
+  //   dp[0] = 1;
+  //   for (let i = 1; i <= n; i++) {
+  //     for (let j = 1; j <= i; j++) {
+  //       dp[i] += dp[j - 1] * dp[i - j];
+  //     }
+  //   }
+  //   return dp[n];
+  // };
+
+  /**
+   * Definition for singly-linked list.
+   * class ListNode {
+   *     val: number
+   *     next: ListNode | null
+   *     constructor(val?: number, next?: ListNode | null) {
+   *         this.val = (val===undefined ? 0 : val)
+   *         this.next = (next===undefined ? null : next)
+   *     }
+   * }
+   */
+  class ListNode {
+    val: number;
+    next: ListNode | null;
+    constructor(val?: number, next?: ListNode | null) {
+      this.val = val === undefined ? 0 : val;
+      this.next = next === undefined ? null : next;
     }
-    return Math.min(dp[query_row][query_glass], 1);
+  }
+
+  function mergeTwoLists(
+    list1: ListNode | null,
+    list2: ListNode | null
+  ): ListNode | null {
+    if (!list1) return list2;
+    if (!list2) return list1;
+    if (list1.val < list2.val) {
+      list1.next = mergeTwoLists(list1.next, list2);
+      return list1;
+    } else {
+      list2.next = mergeTwoLists(list1, list2.next);
+      return list2;
+    }
   }
 
   return (
