@@ -338,20 +338,60 @@ function Result() {
     }
   }
 
-  function mergeTwoLists(
-    list1: ListNode | null,
-    list2: ListNode | null
-  ): ListNode | null {
-    if (!list1) return list2;
-    if (!list2) return list1;
-    if (list1.val < list2.val) {
-      list1.next = mergeTwoLists(list1.next, list2);
-      return list1;
-    } else {
-      list2.next = mergeTwoLists(list1, list2.next);
-      return list2;
-    }
-  }
+  // function mergeTwoLists(
+  //   list1: ListNode | null,
+  //   list2: ListNode | null
+  // ): ListNode | null {
+  //   if (!list1) return list2;
+  //   if (!list2) return list1;
+  //   if (list1.val < list2.val) {
+  //     list1.next = mergeTwoLists(list1.next, list2);
+  //     return list1;
+  //   } else {
+  //     list2.next = mergeTwoLists(list1, list2.next);
+  //     return list2;
+  //   }
+  // }
+
+  // //141. Linked List Cycle
+  // function hasCycle(head: ListNode | null): boolean {
+  //   let slow = head;
+  //   let fast = head;
+  //   while (fast && fast.next) {
+  //     slow = slow!.next;
+  //     fast = fast.next!.next;
+  //     if (slow === fast) return true;
+  //   }
+  //   return false;
+  // };
+
+  // 82. Remove Duplicates from Sorted List II
+  //Given the head of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list sorted as well.
+
+  // function deleteDuplicates(head: ListNode | null): ListNode | null {
+  //   if (!head) return head;
+  //   let current = head;
+  //   while (current.next) {
+  //     if (current.val === current.next.val) {
+  //       current.next = current.next.next;
+  //     } else {
+  //       current = current.next;
+  //     }
+  //   }
+  //   return head;
+  // };
+
+  //1991. Find the Middle Index in Array
+  // function findMiddleIndex(nums: number[]): number {
+  //   let leftSum = 0;
+  //   let rightSum = nums.reduce((prev, curr) => prev + curr, 0) - nums[0];
+  //   for (let i = 0; i < nums.length; i++) {
+  //     if (leftSum === rightSum) return i;
+  //     leftSum += nums[i];
+  //     rightSum -= nums[i + 1] || 0;
+  //   }
+  //   return -1;
+  // }
 
   return (
     <>
