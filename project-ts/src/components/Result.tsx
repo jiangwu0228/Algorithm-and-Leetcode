@@ -393,6 +393,29 @@ function Result() {
   //   return -1;
   // }
 
+//   function reversePrint(head: ListNode | null): number[] {
+//     let arr = [];
+//     while (head) {
+//       arr.push(head.val);
+//       head = head.next;
+//     }
+//     return arr.reverse();
+// };
+
+// function findRepeatNumber(nums: number[]): number {
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//       if (nums[i] === nums[j]) return nums[i];
+//     }
+//   }
+// };
+// function findRepeatNumber(nums: number[]): number {
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//       if (nums[i] === nums[j]) return nums[i];
+//     }
+//   }
+// };
   return (
     <>
       <iframe
