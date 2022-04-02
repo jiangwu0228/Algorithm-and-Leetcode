@@ -430,6 +430,18 @@ function Result() {
 //   }
 //   return true;
 // };
+//240. Search a 2D Matrix II
+// function searchMatrix(matrix: number[][], target: number): boolean {
+//   if (!matrix.length) return false;
+//   let row = matrix.length - 1;
+//   let col = 0;
+//   while (row >= 0 && col < matrix[0].length) {
+//     if (matrix[row][col] === target) return true;
+//     if (matrix[row][col] > target) row--;
+//     else col++;
+//   }
+//   return false;
+// };
   return (
     <>
       <iframe
