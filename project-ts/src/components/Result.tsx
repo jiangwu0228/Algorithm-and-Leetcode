@@ -393,55 +393,108 @@ function Result() {
   //   return -1;
   // }
 
-//   function reversePrint(head: ListNode | null): number[] {
-//     let arr = [];
-//     while (head) {
-//       arr.push(head.val);
-//       head = head.next;
-//     }
-//     return arr.reverse();
+  //   function reversePrint(head: ListNode | null): number[] {
+  //     let arr = [];
+  //     while (head) {
+  //       arr.push(head.val);
+  //       head = head.next;
+  //     }
+  //     return arr.reverse();
+  // };
+
+  // function findRepeatNumber(nums: number[]): number {
+  //   for (let i = 0; i < nums.length; i++) {
+  //     for (let j = i + 1; j < nums.length; j++) {
+  //       if (nums[i] === nums[j]) return nums[i];
+  //     }
+  //   }
+  // };
+  // function findRepeatNumber(nums: number[]): number {
+  //   for (let i = 0; i < nums.length; i++) {
+  //     for (let j = i + 1; j < nums.length; j++) {
+  //       if (nums[i] === nums[j]) return nums[i];
+  //     }
+  //   }
+  // };
+  //125. Valid Palindrome
+  // function validPalindrome(s: string): boolean {
+  //   const replacedString = s.replace(/[^a-z0-9]/ig, "").toLowerCase()
+  //   let left = 0;
+  //   let right = replacedString.length - 1;
+  //   while (left < right) {
+  //     if (replacedString[left] !== replacedString[right]) {
+  //       return false;
+  //     }
+  //     left++;
+  //     right--;
+  //   }
+  //   return true;
+  // };
+  //240. Search a 2D Matrix II
+  // function searchMatrix(matrix: number[][], target: number): boolean {
+  //   if (!matrix.length) return false;
+  //   let row = matrix.length - 1;
+  //   let col = 0;
+  //   while (row >= 0 && col < matrix[0].length) {
+  //     if (matrix[row][col] === target) return true;
+  //     if (matrix[row][col] > target) row--;
+  //     else col++;
+  //   }
+  //   return false;
+  // };
+  //31. Next Permutation
+
+  /**
+ Do not return anything, modify nums in-place instead.
+ */
+  // function nextPermutation(nums: number[]): void {
+  //   let i = nums.length - 2;
+  //   function swap(nums: number[], i: number, j: number): void {
+  //     const tmp = nums[j];
+  //     nums[j] = nums[i];
+  //     nums[i] = tmp;
+  //   }
+  //   while (i >= 0 && nums[i] >= nums[i + 1]) i--;
+  //   if (i == -1) {
+  //     nums.reverse();
+  //     return;
+  //   }
+  //   let j = nums.length - 1;
+  //   while (nums[j] <= nums[i]) j--;
+  //   swap(nums, i, j);
+  //   j = nums.length - 1;
+  //   while (i + 1 < j) {
+  //     swap(nums, i + 1, j);
+  //     i++;
+  //     j--;
+  //   }
+  // }
+
+  /**
+ Do not return anything, modify nums in-place instead.
+ */
+// function nextPermutation(nums: number[]): void {
+//   let i = nums.length - 2;                   // 向左遍历，i从倒数第二开始是为了nums[i+1]要存在
+//   while (i >= 0 && nums[i] >= nums[i + 1]) { // 寻找第一个小于右邻居的数
+//       i--;
+//   }
+//   if (i >= 0) {                             // 这个数在数组中存在，从它身后挑一个数，和它换
+//       let j = nums.length - 1;                // 从最后一项，向左遍历
+//       while (j >= 0 && nums[j] <= nums[i]) {  // 寻找第一个大于 nums[i] 的数
+//           j--;
+//       }
+//       [nums[i], nums[j]] = [nums[j], nums[i]]; // 两数交换，实现变大
+//   }
+//   // 如果 i = -1，说明是递减排列，如 3 2 1，没有下一排列，直接翻转为最小排列：1 2 3
+//   let l = i + 1;           
+//   let r = nums.length - 1;
+//   while (l < r) {                            // i 右边的数进行翻转，使得变大的幅度小一些
+//       [nums[l], nums[r]] = [nums[r], nums[l]];
+//       l++;
+//       r--;
+//   }
 // };
 
-// function findRepeatNumber(nums: number[]): number {
-//   for (let i = 0; i < nums.length; i++) {
-//     for (let j = i + 1; j < nums.length; j++) {
-//       if (nums[i] === nums[j]) return nums[i];
-//     }
-//   }
-// };
-// function findRepeatNumber(nums: number[]): number {
-//   for (let i = 0; i < nums.length; i++) {
-//     for (let j = i + 1; j < nums.length; j++) {
-//       if (nums[i] === nums[j]) return nums[i];
-//     }
-//   }
-// };
-//125. Valid Palindrome
-// function validPalindrome(s: string): boolean {
-//   const replacedString = s.replace(/[^a-z0-9]/ig, "").toLowerCase()
-//   let left = 0;
-//   let right = replacedString.length - 1;
-//   while (left < right) {
-//     if (replacedString[left] !== replacedString[right]) {
-//       return false;
-//     }
-//     left++;
-//     right--;
-//   }
-//   return true;
-// };
-//240. Search a 2D Matrix II
-// function searchMatrix(matrix: number[][], target: number): boolean {
-//   if (!matrix.length) return false;
-//   let row = matrix.length - 1;
-//   let col = 0;
-//   while (row >= 0 && col < matrix[0].length) {
-//     if (matrix[row][col] === target) return true;
-//     if (matrix[row][col] > target) row--;
-//     else col++;
-//   }
-//   return false;
-// };
   return (
     <>
       <iframe
