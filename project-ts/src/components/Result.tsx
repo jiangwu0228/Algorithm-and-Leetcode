@@ -526,6 +526,24 @@ function Result() {
   //   return letters[low];
   // }
 
+  //7. Reverse Integer
+  // function reverse(x: number): number {
+  //   let result = 0;
+  //   while(x) {
+  //       result = result * 10 + x % 10;
+  //       if(result > 2147483647 || result < -2147483648)
+  //           return 0;
+  //       x = Math.trunc(x / 10);
+  //       x = ~~(x / 10); //delete the part after decimal point
+  //   }
+  //   return result;
+  // };
+
+
+
+
+
+
   return (
     <>
       <iframe
