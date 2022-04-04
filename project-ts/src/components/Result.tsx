@@ -539,7 +539,25 @@ function Result() {
   //   return result;
   // };
 
+  //35. Search Insert Position
+  // there are four cases:
+  // 1. target is before the first element
+  // 2. target is after the last element
+  // 3. target is in the middle
+  // 4. target is equal to some element
+  // Simple solution:
+  // function searchInsert(nums: number[], target: number): number {
+  //   //target is before/ equal/ in/ the first element
+  //   for(let i = 0; i < nums.length; i++) {
+  //     if(nums[i] >= target) {
+  //       return i;
+  //     }
+  //   }
+  //   //target is after the last element
+  //   return nums.length;
+  // };
 
+  // Binary Search:
 
 
 
