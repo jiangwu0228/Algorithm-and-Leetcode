@@ -559,8 +559,6 @@ function Result() {
 
   // Binary Search:
 
-
-
   //Implementing a queue with two stacks
   //Implement a queue with two stacks. The declaration of the queue is as follows. Please implement its two functions appendtail and deletehead to insert integers at the end of the queue and delete integers at the head of the queue respectively. (if there is no element in the queue, the deletehead} operation returns - 1)
   // class CQueue {
@@ -596,6 +594,35 @@ function Result() {
   //     return this.stackOut.length === 0 ? -1 : this.stackOut.pop();
   //   }
   // }
+  // 155. Min Stack
+  class MinStack {
+    dataStack: Array<number>;
+    minStack: number;
+    constructor() {
+      this.dataStack = [];
+      this.minStack = Infinity;
+    }
+
+    push(val: number): void {
+      this.dataStack.push(val);
+      if (val < this.minStack) {
+        this.minStack = val;
+      }
+    }
+
+    pop(): void {
+      this.dataStack.pop();
+      this.minStack = Math.min(...this.dataStack);
+    }
+
+    top(): number {
+      return this.dataStack[this.dataStack.length - 1];
+    }
+
+    getMin(): number {
+      return this.minStack;
+    }
+  }
 
   return (
     <>
