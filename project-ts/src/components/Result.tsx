@@ -1,6 +1,14 @@
 import React from "react";
 
 function Result() {
+  class ListNode {
+    val: number;
+    next: ListNode | null;
+    constructor(val?: number, next?: ListNode | null) {
+      this.val = val === undefined ? 0 : val;
+      this.next = next === undefined ? null : next;
+    }
+  }
   //20. Valid Parentheses
   // function isValid(s: string): boolean {
   //   const stack: string[] = [];
@@ -329,14 +337,6 @@ function Result() {
    *     }
    * }
    */
-  class ListNode {
-    val: number;
-    next: ListNode | null;
-    constructor(val?: number, next?: ListNode | null) {
-      this.val = val === undefined ? 0 : val;
-      this.next = next === undefined ? null : next;
-    }
-  }
 
   // function mergeTwoLists(
   //   list1: ListNode | null,
@@ -561,6 +561,41 @@ function Result() {
 
 
 
+  //Implementing a queue with two stacks
+  //Implement a queue with two stacks. The declaration of the queue is as follows. Please implement its two functions appendtail and deletehead to insert integers at the end of the queue and delete integers at the head of the queue respectively. (if there is no element in the queue, the deletehead} operation returns - 1)
+  // class CQueue {
+  //   // define two stacks
+  //   private stackIn: any[];
+  //   private stackOut: any[];
+
+  //   constructor() {
+  //     this.stackIn = [];
+  //     this.stackOut = [];
+  //   }
+
+  //   appendTail(value: number): void {
+  //     //this is add to the end of the queue
+  //     this.stackIn.push(value);
+  //   }
+
+  //   deleteHead(): number {
+  //     //check if the stackOut is empty
+  //     //then check stackIn if is empty will jump off if loop return -1
+  //     // if stackIn is not empty will pop it to stackOut then jump off return
+  //     if (this.stackOut.length === 0) {
+  //       //pop all the elements from end of stackIn to first of stackIn to stackOut
+  //       //then is reverse the stackIn to stackOut
+  //       //that we can pop the first element of stackIn or the last element of stackOut
+  //       while (this.stackIn.length > 0) {
+  //         this.stackOut.push(this.stackIn.pop());
+  //       }
+  //     }
+  //     //check if the stackOut is empty and stackIn is empty will return -1
+  //     // if stackOut is not empty will pop it to stackOut then jump off return
+  //     // that means we did not reverse the stackIn to stackOut
+  //     return this.stackOut.length === 0 ? -1 : this.stackOut.pop();
+  //   }
+  // }
 
   return (
     <>
