@@ -595,34 +595,46 @@ function Result() {
   //   }
   // }
   // 155. Min Stack
-  class MinStack {
-    dataStack: Array<number>;
-    minStack: number;
-    constructor() {
-      this.dataStack = [];
-      this.minStack = Infinity;
-    }
+  // class MinStack {
+  //   dataStack: Array<number>;
+  //   minStack: number;
+  //   constructor() {
+  //     this.dataStack = [];
+  //     this.minStack = Infinity;
+  //   }
 
-    push(val: number): void {
-      this.dataStack.push(val);
-      if (val < this.minStack) {
-        this.minStack = val;
-      }
-    }
+  //   push(val: number): void {
+  //     this.dataStack.push(val);
+  //     if (val < this.minStack) {
+  //       this.minStack = val;
+  //     }
+  //   }
 
-    pop(): void {
-      this.dataStack.pop();
-      this.minStack = Math.min(...this.dataStack);
-    }
+  //   pop(): void {
+  //     this.dataStack.pop();
+  //     this.minStack = Math.min(...this.dataStack);
+  //   }
 
-    top(): number {
-      return this.dataStack[this.dataStack.length - 1];
-    }
+  //   top(): number {
+  //     return this.dataStack[this.dataStack.length - 1];
+  //   }
 
-    getMin(): number {
-      return this.minStack;
-    }
+  //   getMin(): number {
+  //     return this.minStack;
+  //   }
+  // }
+
+function reverseList(head: ListNode | null): ListNode | null {
+  let prev: ListNode | null = null;
+  let curr: ListNode | null = head;
+  while (curr) {
+    const next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
   }
+  return prev;
+};
 
   return (
     <>

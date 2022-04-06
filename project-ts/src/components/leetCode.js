@@ -63,3 +63,8 @@ function multiplyAll(arr) {
   }
   
   console.log(multiplyAll([[1, 2], [3, 4], [5, 6, 7]]));
+
+
+  var copyRandomList = function(head) {
+    
+  };
