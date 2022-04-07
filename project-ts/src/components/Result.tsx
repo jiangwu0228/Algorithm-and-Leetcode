@@ -648,6 +648,12 @@ function Result() {
 // };
 
 
+//reverseString
+// var reverseString = function(s:[]) {
+//   return s.reverse()
+// };
+
+
   return (
     <>
       <iframe
