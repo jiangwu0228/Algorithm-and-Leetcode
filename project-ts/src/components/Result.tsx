@@ -624,17 +624,23 @@ function Result() {
   //   }
   // }
 
-function reverseList(head: ListNode | null): ListNode | null {
-  let prev: ListNode | null = null;
-  let curr: ListNode | null = head;
-  while (curr) {
-    const next = curr.next;
-    curr.next = prev;
-    prev = curr;
-    curr = next;
-  }
-  return prev;
-};
+// function reverseList(head: ListNode | null): ListNode | null {
+//   let prev: ListNode | null = null;
+//   let curr: ListNode | null = head;
+//   while (curr) {
+//     const next = curr.next;
+//     curr.next = prev;
+//     prev = curr;
+//     curr = next;
+//   }
+//   return prev;
+// };
+
+// replace blank
+
+// function replaceSpace(s: string): string {
+//   return s.split(' ').join('%20')
+//   };
 
   return (
     <>
