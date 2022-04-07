@@ -649,10 +649,26 @@ function Result() {
 
 
 //reverseString
+// using 
 // var reverseString = function(s:[]) {
 //   return s.reverse()
 // };
 
+// using two pointers
+// function reverseString(s: string[]): void {
+//   if(s.length === 0) {
+//     return;
+//   }
+//   let left = 0;
+//   let right = s.length - 1;
+//   while(left < right) {
+//     const temp = s[left];
+//     s[left] = s[right];
+//     s[right] = temp;
+//     left++;
+//     right--;
+//   }
+// }
 
   return (
     <>
