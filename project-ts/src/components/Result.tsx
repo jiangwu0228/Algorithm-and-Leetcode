@@ -642,6 +642,12 @@ function Result() {
 //   return s.split(' ').join('%20')
 //   };
 
+//reverseLeftWords
+// function reverseLeftWords(s: string, n: number): string {
+//   return s.slice(n) + s.slice(0, n);
+// };
+
+
   return (
     <>
       <iframe
