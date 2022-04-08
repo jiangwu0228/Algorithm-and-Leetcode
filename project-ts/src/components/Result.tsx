@@ -695,7 +695,16 @@ function Result() {
 //   return count
 // };
 
+// 53 find the missing number in 0~n-1
 
+// function missingNumber(nums: number[]): number {
+//   if (nums[0] !== 0) return 0;
+//   for (let i = 0; i < nums.length; i++) {
+//       if (nums[i + 1] - nums[i] !== 1) {
+//           return nums.length = 0 ? 1 : i + 1
+//       }
+//   }
+// };
 
   return (
     <>
