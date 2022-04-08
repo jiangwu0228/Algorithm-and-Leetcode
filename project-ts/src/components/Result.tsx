@@ -670,6 +670,22 @@ function Result() {
 //   }
 // }
 
+// day 4 search 
+// find repeated number
+// 输入：
+// [2, 3, 1, 0, 2, 5, 3]
+// 输出：2 或 3 
+//function findRepeatNumber(nums: number[]): number {
+//   nums.sort();
+//   for ( let i = 0; i < nums.length; i ++){
+//       if (nums[i] == nums[i+1]){
+//           return nums[i]
+//       }
+//   }
+// };
+
+
+
   return (
     <>
       <iframe
