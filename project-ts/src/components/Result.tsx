@@ -442,6 +442,23 @@ function Result() {
   //   }
   //   return false;
   // };
+
+  // function searchMatrix(matrix: number[][], target: number): boolean {
+  //   return matrix.flat().includes(target)
+  // };
+  // using API
+//   function searchMatrix(matrix: number[][], target: number): boolean {
+//     if (!matrix.length) return false;
+//     let col = 0;
+//     while (col < matrix.length) {
+//         if (matrix[col].includes(target)) {
+//             return true
+//         }
+//         col++
+//     }
+//     return false;
+// };
+   
   //31. Next Permutation
 
   /**
@@ -724,6 +741,9 @@ function Result() {
   //     map.set(nums[i], i);
   //   }
   // }
+
+  // search in binary array
+
 
   return (
     <>
