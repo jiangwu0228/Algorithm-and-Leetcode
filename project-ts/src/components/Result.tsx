@@ -447,42 +447,41 @@ function Result() {
   //   return matrix.flat().includes(target)
   // };
   // using API
-//   function searchMatrix(matrix: number[][], target: number): boolean {
-//     if (!matrix.length) return false;
-//     let col = 0;
-//     while (col < matrix.length) {
-//         if (matrix[col].includes(target)) {
-//             return true
-//         }
-//         col++
-//     }
-//     return false;
-// };
-// binary search
-// function searchMatrix(matrix: number[][], target: number): boolean {
-//   for (const line of matrix) {
-//     let left = 0;
-//     let right = line.length - 1;
-//     let middle;
+  //   function searchMatrix(matrix: number[][], target: number): boolean {
+  //     if (!matrix.length) return false;
+  //     let col = 0;
+  //     while (col < matrix.length) {
+  //         if (matrix[col].includes(target)) {
+  //             return true
+  //         }
+  //         col++
+  //     }
+  //     return false;
+  // };
+  // binary search
+  // function searchMatrix(matrix: number[][], target: number): boolean {
+  //   for (const line of matrix) {
+  //     let left = 0;
+  //     let right = line.length - 1;
+  //     let middle;
 
-//     while (left <= right) {
-//       middle = Math.floor((left + right) / 2);
+  //     while (left <= right) {
+  //       middle = Math.floor((left + right) / 2);
 
-//       if (line[middle] === target) {
-//         return true;
-//       }
+  //       if (line[middle] === target) {
+  //         return true;
+  //       }
 
-//       if (line[middle] < target) {
-//         left = middle + 1;
-//       } else {
-//         right = middle - 1;
-//       }
-//     }
-//   }
-//     return false;
-// };
+  //       if (line[middle] < target) {
+  //         left = middle + 1;
+  //       } else {
+  //         right = middle - 1;
+  //       }
+  //     }
+  //   }
+  //     return false;
+  // };
 
-   
   //31. Next Permutation
 
   /**
@@ -747,6 +746,7 @@ function Result() {
   // };
 
   // 1. Two Sum
+  // Brute Force
   // function twoSum(nums: number[], target: number): number[] {
   //   for (let i = 0; i < nums.length; i++) {
   //     for (let j = i + 1; j < nums.length; j++) {
@@ -766,8 +766,16 @@ function Result() {
   //   }
   // }
 
-  // search in binary array
 
+  // function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
+  //   const combine = nums1.concat(nums2).sort((a, b) => a - b);
+  //   console.log(combine);
+  //   if (combine.length % 2 === 0) {
+  //     return (combine[combine.length / 2 - 1] + combine[combine.length / 2]) / 2;
+  //   }
+  //   return combine[Math.floor(combine.length / 2)];
+  // }
+  // console.log(findMedianSortedArrays([-1, -2], [3]));
 
   return (
     <>
