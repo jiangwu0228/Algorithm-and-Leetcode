@@ -818,6 +818,17 @@ function Result() {
 //     return numbers[left];
 // };
 
+// first Uniq Char
+// function firstUniqChar(s: string): string {
+//   if (s.length === 0) return " ";
+//   for (let i = 0; i < s.length; i++) {
+//     if (s.indexOf(s[i]) === s.lastIndexOf(s[i])) {
+//       return s[i];
+//     }
+//   }
+//   return " ";
+// };
+
   return (
     <>
       <iframe
