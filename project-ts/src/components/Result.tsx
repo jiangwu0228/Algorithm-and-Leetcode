@@ -766,7 +766,6 @@ function Result() {
   //   }
   // }
 
-
   // function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
   //   const combine = nums1.concat(nums2).sort((a, b) => a - b);
   //   console.log(combine);
@@ -776,6 +775,23 @@ function Result() {
   //   return combine[Math.floor(combine.length / 2)];
   // }
   // console.log(findMedianSortedArrays([-1, -2], [3]));
+
+  //findNumberIn2DArray
+  // function findNumberIn2DArray(matrix: number[][], target: number): boolean {
+  //   if (!matrix.length) return false;
+  //   let col = 0;
+  //   while (col < matrix.length) {
+  //     if (matrix[col].includes(target)) {
+  //       return true;
+  //     }
+  //     col++;
+  //   }
+  //   return false;
+  // }
+
+
+
+
 
   return (
     <>
