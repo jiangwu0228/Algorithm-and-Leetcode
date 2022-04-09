@@ -458,6 +458,30 @@ function Result() {
 //     }
 //     return false;
 // };
+// binary search
+// function searchMatrix(matrix: number[][], target: number): boolean {
+//   for (const line of matrix) {
+//     let left = 0;
+//     let right = line.length - 1;
+//     let middle;
+
+//     while (left <= right) {
+//       middle = Math.floor((left + right) / 2);
+
+//       if (line[middle] === target) {
+//         return true;
+//       }
+
+//       if (line[middle] < target) {
+//         left = middle + 1;
+//       } else {
+//         right = middle - 1;
+//       }
+//     }
+//   }
+//     return false;
+// };
+
    
   //31. Next Permutation
 
