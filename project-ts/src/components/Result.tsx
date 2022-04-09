@@ -624,87 +624,106 @@ function Result() {
   //   }
   // }
 
-// function reverseList(head: ListNode | null): ListNode | null {
-//   let prev: ListNode | null = null;
-//   let curr: ListNode | null = head;
-//   while (curr) {
-//     const next = curr.next;
-//     curr.next = prev;
-//     prev = curr;
-//     curr = next;
-//   }
-//   return prev;
-// };
+  // function reverseList(head: ListNode | null): ListNode | null {
+  //   let prev: ListNode | null = null;
+  //   let curr: ListNode | null = head;
+  //   while (curr) {
+  //     const next = curr.next;
+  //     curr.next = prev;
+  //     prev = curr;
+  //     curr = next;
+  //   }
+  //   return prev;
+  // };
 
-// replace blank
+  // replace blank
 
-// function replaceSpace(s: string): string {
-//   return s.split(' ').join('%20')
-//   };
+  // function replaceSpace(s: string): string {
+  //   return s.split(' ').join('%20')
+  //   };
 
-//reverseLeftWords
-// function reverseLeftWords(s: string, n: number): string {
-//   return s.slice(n) + s.slice(0, n);
-// };
+  //reverseLeftWords
+  // function reverseLeftWords(s: string, n: number): string {
+  //   return s.slice(n) + s.slice(0, n);
+  // };
 
+  //reverseString
+  // using
+  // var reverseString = function(s:[]) {
+  //   return s.reverse()
+  // };
 
-//reverseString
-// using 
-// var reverseString = function(s:[]) {
-//   return s.reverse()
-// };
+  // using two pointers
+  // function reverseString(s: string[]): void {
+  //   if(s.length === 0) {
+  //     return;
+  //   }
+  //   let left = 0;
+  //   let right = s.length - 1;
+  //   while(left < right) {
+  //     const temp = s[left];
+  //     s[left] = s[right];
+  //     s[right] = temp;
+  //     left++;
+  //     right--;
+  //   }
+  // }
 
-// using two pointers
-// function reverseString(s: string[]): void {
-//   if(s.length === 0) {
-//     return;
-//   }
-//   let left = 0;
-//   let right = s.length - 1;
-//   while(left < right) {
-//     const temp = s[left];
-//     s[left] = s[right];
-//     s[right] = temp;
-//     left++;
-//     right--;
-//   }
-// }
+  // day 4 search
+  // find repeated number
+  // 输入：
+  // [2, 3, 1, 0, 2, 5, 3]
+  // 输出：2 或 3
+  //function findRepeatNumber(nums: number[]): number {
+  //   nums.sort();
+  //   for ( let i = 0; i < nums.length; i ++){
+  //       if (nums[i] == nums[i+1]){
+  //           return nums[i]
+  //       }
+  //   }
+  // };
 
-// day 4 search 
-// find repeated number
-// 输入：
-// [2, 3, 1, 0, 2, 5, 3]
-// 输出：2 或 3 
-//function findRepeatNumber(nums: number[]): number {
-//   nums.sort();
-//   for ( let i = 0; i < nums.length; i ++){
-//       if (nums[i] == nums[i+1]){
-//           return nums[i]
-//       }
-//   }
-// };
+  // 53 find the number in ordered array
+  // function search(nums: number[], target: number): number {
+  //   let count = 0;
+  //   for ( let i = 0; i< nums.length ; i++){
+  //       if (nums[i]==target){
+  //           count++;
+  //       }
+  //   }
+  //   return count
+  // };
 
-// 53 find the number in ordered array
-// function search(nums: number[], target: number): number {
-//   let count = 0;
-//   for ( let i = 0; i< nums.length ; i++){
-//       if (nums[i]==target){
-//           count++;
-//       }
-//   }
-//   return count
-// };
+  // 53 find the missing number in 0~n-1
 
-// 53 find the missing number in 0~n-1
+  // function missingNumber(nums: number[]): number {
+  //   if (nums[0] !== 0) return 0;
+  //   for (let i = 0; i < nums.length; i++) {
+  //       if (nums[i + 1] - nums[i] !== 1) {
+  //           return nums.length = 0 ? 1 : i + 1
+  //       }
+  //   }
+  // };
 
-// function missingNumber(nums: number[]): number {
-//   if (nums[0] !== 0) return 0;
-//   for (let i = 0; i < nums.length; i++) {
-//       if (nums[i + 1] - nums[i] !== 1) {
-//           return nums.length = 0 ? 1 : i + 1
-//       }
-//   }
-// };
+  // 1. Two Sum
+  // function twoSum(nums: number[], target: number): number[] {
+  //   for (let i = 0; i < nums.length; i++) {
+  //     for (let j = i + 1; j < nums.length; j++) {
+  //       if (nums[i] + nums[j] === target) {
+  //         return [i, j];
+  //       }
+  //     }
+  //   }
+  // }
+  // function twoSum(nums: number[], target: number): number[] {
+  //   const map = new Map();
+  //   for (let i = 0; i < nums.length; i++) {
+  //     if (map.has(target - nums[i])) {
+  //       return [map.get(target - nums[i]), i];
+  //     }
+  //     map.set(nums[i], i);
+  //   }
+  // }
 
   return (
     <>
