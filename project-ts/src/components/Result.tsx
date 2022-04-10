@@ -839,19 +839,19 @@ function Result() {
     }
   }
   // level Order 1
-//   function levelOrder(root: TreeNode | null): number[] {
-//     if (!root) return [];
-//     const result: number[] = [];
-//     const queue: TreeNode[] = [];
-//     queue.push(root);
-//     while (queue.length) {
-//       const node = queue.shift();
-//       result.push(node.val);
-//       if (node.left) queue.push(node.left);
-//       if (node.right) queue.push(node.right);
-//     }
-//     return result;
-// };
+  //   function levelOrder(root: TreeNode | null): number[] {
+  //     if (!root) return [];
+  //     const result: number[] = [];
+  //     const queue: TreeNode[] = [];
+  //     queue.push(root);
+  //     while (queue.length) {
+  //       const node = queue.shift();
+  //       result.push(node.val);
+  //       if (node.left) queue.push(node.left);
+  //       if (node.right) queue.push(node.right);
+  //     }
+  //     return result;
+  // };
 
   //102. Binary Tree Level Order Traversal
   // function levelOrder(root: TreeNode | null): number[][] {
@@ -871,6 +871,25 @@ function Result() {
   //   return result;
   // };
 
+  function levelOrder(root: TreeNode | null): number[][] {
+    if (!root) return [];
+    const result: number[][] = [];
+    const queue: TreeNode[] = [root]; //节点入队
+    while (queue.length) {
+      let rest: number[] = [];
+      let flag = false;
+      for (let i = queue.length; i > 0; i--) {
+        // 需要倒着删，不然数组顺序会改
+        let node = queue.shift(); // 取出头
+        rest.push(node.val); // 把值放入当前层的数组中
+        node.left && queue.push(node.left); // 如果有左子树，接着把当前层的node的左子树放入
+        node.right && queue.push(node.right); // 如果有右子树
+      }
+      result.push(flag ? rest.reverse() : rest);// 旋转一层，改变状态
+      flag = !flag;
+    }
+    return result;
+  }
 
   return (
     <>
