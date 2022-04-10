@@ -838,7 +838,20 @@ function Result() {
       this.right = right === undefined ? null : right;
     }
   }
-
+  // level Order 1
+//   function levelOrder(root: TreeNode | null): number[] {
+//     if (!root) return [];
+//     const result: number[] = [];
+//     const queue: TreeNode[] = [];
+//     queue.push(root);
+//     while (queue.length) {
+//       const node = queue.shift();
+//       result.push(node.val);
+//       if (node.left) queue.push(node.left);
+//       if (node.right) queue.push(node.right);
+//     }
+//     return result;
+// };
 
   //102. Binary Tree Level Order Traversal
   // function levelOrder(root: TreeNode | null): number[][] {
