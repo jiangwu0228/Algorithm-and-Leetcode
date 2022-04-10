@@ -789,7 +789,6 @@ function Result() {
   //   return false;
   // }
 
-
   //Brute Force
   // function minArray(numbers: number[]): number {
   //   let min = numbers[0];
@@ -801,33 +800,64 @@ function Result() {
   //   return min;
   // };
 
-//   function minArray(numbers: number[]): number {
-//     //binary search
-//     let left = 0;
-//     let right = numbers.length - 1;
-//     while (left < right) {
-//       let mid = Math.floor((left + right) / 2);
-//       if (numbers[mid] > numbers[right]) {
-//         left = mid + 1;
-//       } else if(numbers[mid] < numbers[right]) {
-//         right = mid;
-//       }else {
-//         right--;
-//       }
-//     }
-//     return numbers[left];
-// };
+  //   function minArray(numbers: number[]): number {
+  //     //binary search
+  //     let left = 0;
+  //     let right = numbers.length - 1;
+  //     while (left < right) {
+  //       let mid = Math.floor((left + right) / 2);
+  //       if (numbers[mid] > numbers[right]) {
+  //         left = mid + 1;
+  //       } else if(numbers[mid] < numbers[right]) {
+  //         right = mid;
+  //       }else {
+  //         right--;
+  //       }
+  //     }
+  //     return numbers[left];
+  // };
 
-// first Uniq Char
-// function firstUniqChar(s: string): string {
-//   if (s.length === 0) return " ";
-//   for (let i = 0; i < s.length; i++) {
-//     if (s.indexOf(s[i]) === s.lastIndexOf(s[i])) {
-//       return s[i];
-//     }
-//   }
-//   return " ";
-// };
+  // first Uniq Char
+  // function firstUniqChar(s: string): string {
+  //   if (s.length === 0) return " ";
+  //   for (let i = 0; i < s.length; i++) {
+  //     if (s.indexOf(s[i]) === s.lastIndexOf(s[i])) {
+  //       return s[i];
+  //     }
+  //   }
+  //   return " ";
+  // };
+
+  class TreeNode {
+    val: number;
+    left: TreeNode | null;
+    right: TreeNode | null;
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+      this.val = val === undefined ? 0 : val;
+      this.left = left === undefined ? null : left;
+      this.right = right === undefined ? null : right;
+    }
+  }
+
+
+  //102. Binary Tree Level Order Traversal
+  // function levelOrder(root: TreeNode | null): number[][] {
+  //   if (!root) return [];
+  //   const result:number [][] = [];
+  //   const queue: TreeNode[] = [root]; //节点入队
+  //   while (queue.length) {
+  //       let rest: number[] = [];
+  //       for (let i = queue.length; i > 0; i--) {  // 需要倒着删，不然数组顺序会改
+  //           let node = queue.shift();  // 取出头
+  //           rest.push(node.val);  // 把值放入当前层的数组中
+  //           node.left && queue.push(node.left);  // 如果有左子树，接着把当前层的node的左子树放入
+  //           node.right && queue.push(node.right);  // 如果有右子树
+  //       }
+  //       result.push(rest)
+  //   }
+  //   return result;
+  // };
+
 
   return (
     <>
