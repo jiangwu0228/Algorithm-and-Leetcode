@@ -892,25 +892,34 @@ function Result() {
   // }
 
   //剑指 Offer 26. 树的子结构
-  function isSubStructure(A: TreeNode | null, B: TreeNode | null): boolean {
-    // A or B is empty
-    if (!A || !B) return false;
-    // or using recursion
-    return (
-      isSame(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B)
-    );
+  // function isSubStructure(A: TreeNode | null, B: TreeNode | null): boolean {
+  //   // A or B is empty
+  //   if (!A || !B) return false;
+  //   // or using recursion
+  //   return (
+  //     isSame(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B)
+  //   );
 
-    function isSame(A: TreeNode | null, B: TreeNode | null): boolean {
-      // B is empty return true
-      if (!B) return true;
-      // A is empty return false
-      if (!A) return false;
-      // A and B is not same return false
-      if (A.val !== B.val) return false;
-      // or using recursion
-      return isSame(A.left, B.left) && isSame(A.right, B.right);
+  //   function isSame(A: TreeNode | null, B: TreeNode | null): boolean {
+  //     // B is empty return true
+  //     if (!B) return true;
+  //     // A is empty return false
+  //     if (!A) return false;
+  //     // A and B is not same return false
+  //     if (A.val !== B.val) return false;
+  //     // or using recursion
+  //     return isSame(A.left, B.left) && isSame(A.right, B.right);
+  //   }
+  // }
+
+  // 226. Invert Binary Tree
+  function invertTree(root: TreeNode | null): TreeNode | null {
+    if(root){
+      // js API
+        [root.left, root.right] = [invertTree(root.right), invertTree(root.left)]
     }
-  }
+    return root
+};
 
   return (
     <>
