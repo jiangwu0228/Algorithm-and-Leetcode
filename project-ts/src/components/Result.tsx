@@ -922,23 +922,48 @@ function Result() {
   // }
 
   // 101. Symmetric Tree
-  function isSymmetric(root: TreeNode | null): boolean {
-    if (!root) return true;
-    function isMirror(left: TreeNode | null, right: TreeNode | null): boolean {
-      if (!left && !right) return true;
-      if (
-        left &&
-        right &&
-        left.val === right.val &&
-        isMirror(left.left, right.right) &&
-        isMirror(left.right, right.left)
-      ) {
-        return true;
-      }
-      return false;
+  // function isSymmetric(root: TreeNode | null): boolean {
+  //   if (!root) return true;
+  //   function isMirror(left: TreeNode | null, right: TreeNode | null): boolean {
+  //     if (!left && !right) return true;
+  //     if (
+  //       left &&
+  //       right &&
+  //       left.val === right.val &&
+  //       isMirror(left.left, right.right) &&
+  //       isMirror(left.right, right.left)
+  //     ) {
+  //       return true;
+  //     }
+  //     return false;
+  //   }
+  //   return isMirror(root.left, root.right);
+  // }
+
+  // 剑指 Offer 09. 用两个栈实现队列
+  class CQueue {
+    private stackIn: number[];
+    private stackOut: number[];
+
+    constructor() {
+        this.stackIn = [];
+        this.stackOut = [];
     }
-    return isMirror(root.left, root.right);
-  }
+
+    appendTail(value: number): void {
+        this.stackIn.push(value)
+    }
+
+    deleteHead(): number {
+        const { stackIn, stackOut } = this
+        if (stackIn.length === 0 && stackOut.length === 0) return -1
+        if (stackOut.length > 0) return stackOut.pop();
+        while (stackIn.length) {
+            stackOut.push(stackIn.pop())
+        }
+        return stackOut.pop();
+    }
+}
 
   return (
     <>
