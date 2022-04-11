@@ -913,13 +913,32 @@ function Result() {
   // }
 
   // 226. Invert Binary Tree
-  function invertTree(root: TreeNode | null): TreeNode | null {
-    if(root){
-      // js API
-        [root.left, root.right] = [invertTree(root.right), invertTree(root.left)]
+  // function invertTree(root: TreeNode | null): TreeNode | null {
+  //   if (root) {
+  //     // js API
+  //     [root.left, root.right] = [invertTree(root.right), invertTree(root.left)];
+  //   }
+  //   return root;
+  // }
+
+  // 101. Symmetric Tree
+  function isSymmetric(root: TreeNode | null): boolean {
+    if (!root) return true;
+    function isMirror(left: TreeNode | null, right: TreeNode | null): boolean {
+      if (!left && !right) return true;
+      if (
+        left &&
+        right &&
+        left.val === right.val &&
+        isMirror(left.left, right.right) &&
+        isMirror(left.right, right.left)
+      ) {
+        return true;
+      }
+      return false;
     }
-    return root
-};
+    return isMirror(root.left, root.right);
+  }
 
   return (
     <>
