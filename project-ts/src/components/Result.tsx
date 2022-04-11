@@ -9,6 +9,16 @@ function Result() {
       this.next = next === undefined ? null : next;
     }
   }
+  class TreeNode {
+    val: number;
+    left: TreeNode | null;
+    right: TreeNode | null;
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+      this.val = val === undefined ? 0 : val;
+      this.left = left === undefined ? null : left;
+      this.right = right === undefined ? null : right;
+    }
+  }
   //20. Valid Parentheses
   // function isValid(s: string): boolean {
   //   const stack: string[] = [];
@@ -63,7 +73,7 @@ function Result() {
 
   //392. Is Subsequence
   // function isSubsequence(s: string, t: string): boolean {
-  //   let i = 0;
+  //   let i:number = 0;
   //   let j = 0;
   //   while (i < s.length && j < t.length) {
   //     if (s[i] === t[j]) {
@@ -828,16 +838,6 @@ function Result() {
   //   return " ";
   // };
 
-  class TreeNode {
-    val: number;
-    left: TreeNode | null;
-    right: TreeNode | null;
-    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-      this.val = val === undefined ? 0 : val;
-      this.left = left === undefined ? null : left;
-      this.right = right === undefined ? null : right;
-    }
-  }
   // level Order 1
   //   function levelOrder(root: TreeNode | null): number[] {
   //     if (!root) return [];
@@ -891,15 +891,26 @@ function Result() {
   //   return result;
   // }
 
-  const temp = '' + x
-  let l = 0, r = temp.length -1
-  while (l < r) {
-      if (temp[l] !== temp[r]) return false
-      l++
-      r--
-  }
-  return true
+  //剑指 Offer 26. 树的子结构
+  function isSubStructure(A: TreeNode | null, B: TreeNode | null): boolean {
+    // A or B is empty
+    if (!A || !B) return false;
+    // or using recursion
+    return (
+      isSame(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B)
+    );
 
+    function isSame(A: TreeNode | null, B: TreeNode | null): boolean {
+      // B is empty return true
+      if (!B) return true;
+      // A is empty return false
+      if (!A) return false;
+      // A and B is not same return false
+      if (A.val !== B.val) return false;
+      // or using recursion
+      return isSame(A.left, B.left) && isSame(A.right, B.right);
+    }
+  }
 
   return (
     <>
