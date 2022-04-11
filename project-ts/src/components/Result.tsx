@@ -971,7 +971,7 @@ function Result() {
   //     s
   //   );
   // }
-  // 剑指 Offer 24. 反转链表
+  // 剑指 Offer 24. 反转链表 recursion
   // function reverseList(head: ListNode | null): ListNode | null {
   //   // prev is the node before the current node, current is the current node
   //   let prev: ListNode | null = null;
@@ -986,15 +986,45 @@ function Result() {
   //   return prev;
   // }
 
-  function reverseList(head: ListNode | null): ListNode | null {
-    if (head == null || head.next == null) return head; //the end of recursion
-    let node = reverseList(head.next);
-    //next node point to the previous node
-    head.next.next = head;
-    //set current node's next node to null
-    head.next = null;
-    return node;
-  }
+  // function reverseList(head: ListNode | null): ListNode | null {
+  //   if (head == null || head.next == null) return head; //the end of recursion
+  //   let node = reverseList(head.next);
+  //   //next node point to the previous node
+  //   head.next.next = head;
+  //   //set current node's next node to null
+  //   head.next = null;
+  //   return node;
+  // }
+
+  // 剑指 Offer 30. 包含 min 函数的栈
+  class MinStack {
+    dataStack: Array<number>;
+    minStack: number;
+    constructor() {
+        this.dataStack = [];
+        this.minStack = Infinity;
+    }
+
+    push(val: number): void {
+        this.dataStack.push(val);
+        if (val < this.minStack) {
+            this.minStack = val;
+        }
+    }
+
+    pop(): void {
+        this.dataStack.pop();
+        this.minStack = Math.min(...this.dataStack);
+    }
+
+    top(): number {
+        return this.dataStack[this.dataStack.length - 1];
+    }
+
+    getMin(): number {
+        return this.minStack;
+    }
+}
 
   return (
     <>
