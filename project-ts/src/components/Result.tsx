@@ -941,29 +941,36 @@ function Result() {
   // }
 
   // 剑指 Offer 09. 用两个栈实现队列
-  class CQueue {
-    private stackIn: number[];
-    private stackOut: number[];
+  //   class CQueue {
+  //     private stackIn: number[];
+  //     private stackOut: number[];
 
-    constructor() {
-        this.stackIn = [];
-        this.stackOut = [];
-    }
+  //     constructor() {
+  //         this.stackIn = [];
+  //         this.stackOut = [];
+  //     }
 
-    appendTail(value: number): void {
-        this.stackIn.push(value)
-    }
+  //     appendTail(value: number): void {
+  //         this.stackIn.push(value)
+  //     }
 
-    deleteHead(): number {
-        const { stackIn, stackOut } = this
-        if (stackIn.length === 0 && stackOut.length === 0) return -1
-        if (stackOut.length > 0) return stackOut.pop();
-        while (stackIn.length) {
-            stackOut.push(stackIn.pop())
-        }
-        return stackOut.pop();
-    }
-}
+  //     deleteHead(): number {
+  //         const { stackIn, stackOut } = this
+  //         if (stackIn.length === 0 && stackOut.length === 0) return -1
+  //         if (stackOut.length > 0) return stackOut.pop();
+  //         while (stackIn.length) {
+  //             stackOut.push(stackIn.pop())
+  //         }
+  //         return stackOut.pop();
+  //     }
+  // }
+
+  // 剑指 Offer 20. 表示数值的字符串
+  function isNumber(s: string): boolean {
+    return /^\s*[-+]?((\d+(\.\d+)?)|(\.\d+)|(\d+\.))([eE][-+]?\d+)?\s*$/.test(
+      s
+    );
+  }
 
   return (
     <>
