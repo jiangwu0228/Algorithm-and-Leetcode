@@ -966,10 +966,24 @@ function Result() {
   // }
 
   // 剑指 Offer 20. 表示数值的字符串
-  function isNumber(s: string): boolean {
-    return /^\s*[-+]?((\d+(\.\d+)?)|(\.\d+)|(\d+\.))([eE][-+]?\d+)?\s*$/.test(
-      s
-    );
+  // function isNumber(s: string): boolean {
+  //   return /^\s*[-+]?((\d+(\.\d+)?)|(\.\d+)|(\d+\.))([eE][-+]?\d+)?\s*$/.test(
+  //     s
+  //   );
+  // }
+  // 剑指 Offer 24. 反转链表
+  function reverseList(head: ListNode | null): ListNode | null {
+    // prev is the node before the current node, current is the current node
+    let prev: ListNode | null = null;
+    let curr: ListNode | null = head;
+    // pinot current node to prev node, then move current node and prev node to next node
+    while (curr) {
+      const next = curr.next;// save next node
+      curr.next = prev;// current node's next node is prev node
+      prev = curr;// prev node move to next node
+      curr = next;// current node move to next node
+    }
+    return prev;
   }
 
   return (
