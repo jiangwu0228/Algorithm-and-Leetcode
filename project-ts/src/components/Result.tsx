@@ -972,18 +972,28 @@ function Result() {
   //   );
   // }
   // 剑指 Offer 24. 反转链表
+  // function reverseList(head: ListNode | null): ListNode | null {
+  //   // prev is the node before the current node, current is the current node
+  //   let prev: ListNode | null = null;
+  //   let curr: ListNode | null = head;
+  //   // pinot current node to prev node, then move current node and prev node to next node
+  //   while (curr) {
+  //     const next = curr.next;// save next node
+  //     curr.next = prev;// current node's next node is prev node
+  //     prev = curr;// prev node move to next node
+  //     curr = next;// current node move to next node
+  //   }
+  //   return prev;
+  // }
+
   function reverseList(head: ListNode | null): ListNode | null {
-    // prev is the node before the current node, current is the current node
-    let prev: ListNode | null = null;
-    let curr: ListNode | null = head;
-    // pinot current node to prev node, then move current node and prev node to next node
-    while (curr) {
-      const next = curr.next;// save next node
-      curr.next = prev;// current node's next node is prev node
-      prev = curr;// prev node move to next node
-      curr = next;// current node move to next node
-    }
-    return prev;
+    if (head == null || head.next == null) return head; //the end of recursion
+    let node = reverseList(head.next);
+    //next node point to the previous node
+    head.next.next = head;
+    //set current node's next node to null
+    head.next = null;
+    return node;
   }
 
   return (
