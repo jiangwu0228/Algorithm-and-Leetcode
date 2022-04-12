@@ -1044,8 +1044,23 @@ function fib(n: number): number {
 //   )[n];
 // };
 
-function fib(n: number, a = 0, b = 1): number {
-  return n === 0 ? a : fib(n - 1, b % 1000000007, a + b);
+// function fib(n: number, a = 0, b = 1): number {
+//   return n === 0 ? a : fib(n - 1, b % 1000000007, a + b);
+// };
+
+//剑指 Offer 10- II. 青蛙跳台阶问题
+function numWays(n: number): number {
+  if(n < 2) return 1
+
+  let p=0, q=1,r=1
+
+  for(let i=2;i<=n;i++){
+      p = q,
+      q = r
+      r= (p+q)%1000000007
+  }
+
+  return r
 };
 
 
