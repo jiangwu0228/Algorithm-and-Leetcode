@@ -1035,13 +1035,17 @@ function fib(n: number): number {
 };
 
 // fibonacci
-function fib(n: number): number {
-  //concat API time out
-  return [0, 1].concat(
-    Array.from({ length: n - 1 }, (_, i) =>
-      fib(i) + fib(i + 1)
-    )
-  )[n];
+// function fib(n: number): number {
+//   //concat API time out
+//   return [0, 1].concat(
+//     Array.from({ length: n - 1 }, (_, i) =>
+//       fib(i) + fib(i + 1)
+//     )
+//   )[n];
+// };
+
+function fib(n: number, a = 0, b = 1): number {
+  return n === 0 ? a : fib(n - 1, b % 1000000007, a + b);
 };
 
 
