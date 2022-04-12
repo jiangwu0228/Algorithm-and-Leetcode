@@ -997,34 +997,43 @@ function Result() {
   // }
 
   // 剑指 Offer 30. 包含 min 函数的栈
-  class MinStack {
-    dataStack: Array<number>;
-    minStack: number;
-    constructor() {
-        this.dataStack = [];
-        this.minStack = Infinity;
-    }
+//   class MinStack {
+//     dataStack: Array<number>;
+//     minStack: number;
+//     constructor() {
+//         this.dataStack = [];
+//         this.minStack = Infinity;
+//     }
 
-    push(val: number): void {
-        this.dataStack.push(val);
-        if (val < this.minStack) {
-            this.minStack = val;
-        }
-    }
+//     push(val: number): void {
+//         this.dataStack.push(val);
+//         if (val < this.minStack) {
+//             this.minStack = val;
+//         }
+//     }
 
-    pop(): void {
-        this.dataStack.pop();
-        this.minStack = Math.min(...this.dataStack);
-    }
+//     pop(): void {
+//         this.dataStack.pop();
+//         this.minStack = Math.min(...this.dataStack);
+//     }
 
-    top(): number {
-        return this.dataStack[this.dataStack.length - 1];
-    }
+//     top(): number {
+//         return this.dataStack[this.dataStack.length - 1];
+//     }
 
-    getMin(): number {
-        return this.minStack;
-    }
-}
+//     getMin(): number {
+//         return this.minStack;
+//     }
+// }
+
+// 斐波那契数列
+function fib(n: number): number {
+  //time out
+  if (n <= 1) return n;
+  return fib(n - 1) + fib(n - 2);
+};
+
+
 
   return (
     <>
