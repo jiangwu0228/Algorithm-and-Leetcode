@@ -1027,12 +1027,22 @@ function Result() {
 // }
 
 // 斐波那契数列
+//recursion
 function fib(n: number): number {
   //time out
   if (n <= 1) return n;
   return fib(n - 1) + fib(n - 2);
 };
 
+// fibonacci
+function fib(n: number): number {
+  //concat API time out
+  return [0, 1].concat(
+    Array.from({ length: n - 1 }, (_, i) =>
+      fib(i) + fib(i + 1)
+    )
+  )[n];
+};
 
 
   return (
