@@ -997,72 +997,89 @@ function Result() {
   // }
 
   // 剑指 Offer 30. 包含 min 函数的栈
-//   class MinStack {
-//     dataStack: Array<number>;
-//     minStack: number;
-//     constructor() {
-//         this.dataStack = [];
-//         this.minStack = Infinity;
-//     }
+  //   class MinStack {
+  //     dataStack: Array<number>;
+  //     minStack: number;
+  //     constructor() {
+  //         this.dataStack = [];
+  //         this.minStack = Infinity;
+  //     }
 
-//     push(val: number): void {
-//         this.dataStack.push(val);
-//         if (val < this.minStack) {
-//             this.minStack = val;
-//         }
-//     }
+  //     push(val: number): void {
+  //         this.dataStack.push(val);
+  //         if (val < this.minStack) {
+  //             this.minStack = val;
+  //         }
+  //     }
 
-//     pop(): void {
-//         this.dataStack.pop();
-//         this.minStack = Math.min(...this.dataStack);
-//     }
+  //     pop(): void {
+  //         this.dataStack.pop();
+  //         this.minStack = Math.min(...this.dataStack);
+  //     }
 
-//     top(): number {
-//         return this.dataStack[this.dataStack.length - 1];
-//     }
+  //     top(): number {
+  //         return this.dataStack[this.dataStack.length - 1];
+  //     }
 
-//     getMin(): number {
-//         return this.minStack;
-//     }
-// }
+  //     getMin(): number {
+  //         return this.minStack;
+  //     }
+  // }
 
-// 斐波那契数列
-//recursion
-function fib(n: number): number {
-  //time out
-  if (n <= 1) return n;
-  return fib(n - 1) + fib(n - 2);
-};
-
-// fibonacci
-// function fib(n: number): number {
-//   //concat API time out
-//   return [0, 1].concat(
-//     Array.from({ length: n - 1 }, (_, i) =>
-//       fib(i) + fib(i + 1)
-//     )
-//   )[n];
-// };
-
-// function fib(n: number, a = 0, b = 1): number {
-//   return n === 0 ? a : fib(n - 1, b % 1000000007, a + b);
-// };
-
-//剑指 Offer 10- II. 青蛙跳台阶问题
-function numWays(n: number): number {
-  if(n < 2) return 1
-
-  let p=0, q=1,r=1
-
-  for(let i=2;i<=n;i++){
-      p = q,
-      q = r
-      r= (p+q)%1000000007
+  // 斐波那契数列
+  //recursion
+  function fib(n: number): number {
+    //time out
+    if (n <= 1) return n;
+    return fib(n - 1) + fib(n - 2);
   }
 
-  return r
-};
+  // fibonacci
+  // function fib(n: number): number {
+  //   //concat API time out
+  //   return [0, 1].concat(
+  //     Array.from({ length: n - 1 }, (_, i) =>
+  //       fib(i) + fib(i + 1)
+  //     )
+  //   )[n];
+  // };
 
+  // function fib(n: number, a = 0, b = 1): number {
+  //   return n === 0 ? a : fib(n - 1, b % 1000000007, a + b);
+  // };
+
+  //剑指 Offer 10- II. 青蛙跳台阶问题
+  // function numWays(n: number): number {
+  //   if(n < 2) return 1
+
+  //   let p=0, q=1,r=1
+
+  //   for(let i=2;i<=n;i++){
+  //       p = q,
+  //       q = r
+  //       r= (p+q)%1000000007
+  //   }
+
+  //   return r
+  // };
+
+  //股票的最大利润
+
+  function maxProfit(prices: number[]): number {
+    //min save the lowest price
+    let min = Number.MAX_SAFE_INTEGER; //7/1/1/1/1/1
+    //max save the max profit
+    let max = 0; //0/0/4/4/5//5
+
+    prices.forEach((price) => {
+      //is the lowest price? save it.
+      min = Math.min(min, price);
+      //get the profit, if higher than max, save it.
+      max = Math.max(max, price - min);
+    });
+
+    return max;
+  }
 
   return (
     <>
