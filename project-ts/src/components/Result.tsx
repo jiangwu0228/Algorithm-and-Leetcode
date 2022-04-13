@@ -1028,11 +1028,11 @@ function Result() {
 
   // 斐波那契数列
   //recursion
-  function fib(n: number): number {
-    //time out
-    if (n <= 1) return n;
-    return fib(n - 1) + fib(n - 2);
-  }
+  // function fib(n: number): number {
+  //   //time out
+  //   if (n <= 1) return n;
+  //   return fib(n - 1) + fib(n - 2);
+  // }
 
   // fibonacci
   // function fib(n: number): number {
@@ -1065,21 +1065,31 @@ function Result() {
 
   //股票的最大利润
 
-  function maxProfit(prices: number[]): number {
-    //min save the lowest price
-    let min = Number.MAX_SAFE_INTEGER; //7/1/1/1/1/1
-    //max save the max profit
-    let max = 0; //0/0/4/4/5//5
+  // function maxProfit(prices: number[]): number {
+  //   //min save the lowest price
+  //   let min = Number.MAX_SAFE_INTEGER; //7/1/1/1/1/1
+  //   //max save the max profit
+  //   let max = 0; //0/0/4/4/5//5
 
-    prices.forEach((price) => {
-      //is the lowest price? save it.
-      min = Math.min(min, price);
-      //get the profit, if higher than max, save it.
-      max = Math.max(max, price - min);
-    });
+  //   prices.forEach((price) => {
+  //     //is the lowest price? save it.
+  //     min = Math.min(min, price);
+  //     //get the profit, if higher than max, save it.
+  //     max = Math.max(max, price - min);
+  //   });
 
-    return max;
-  }
+  //   return max;
+  // }
+  // 剑指 Offer 42. 连续子数组的最大和
+  function maxSubArray(nums: number[]): number {
+    let min = nums[0];
+    let max = nums[0];
+    for(let i=1;i<nums.length;i++){
+      min= Math.max(min+nums[i],nums[i])
+      max= Math.max(max,min)
+    }
+    return max
+};
 
   return (
     <>
