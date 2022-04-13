@@ -1081,15 +1081,36 @@ function Result() {
   //   return max;
   // }
   // 剑指 Offer 42. 连续子数组的最大和
-  function maxSubArray(nums: number[]): number {
-    let min = nums[0];
-    let max = nums[0];
-    for(let i=1;i<nums.length;i++){
-      min= Math.max(min+nums[i],nums[i])
-      max= Math.max(max,min)
+  // function maxSubArray(nums: number[]): number {
+  //   let min = nums[0];
+  //   let max = nums[0];
+  //   for (let i = 1; i < nums.length; i++) {
+  //     min = Math.max(min + nums[i], nums[i]);
+  //     max = Math.max(max, min);
+  //   }
+  //   return max;
+  // }
+  // 剑指 Offer 47. 礼物的最大价值
+  function maxValue(grid: number[][]): number {
+    const row = grid.length,
+      column = grid[0].length;
+
+    for (let i = 0; i < row; i++) {
+      for (let j = 0; j < column; j++) {
+        if (i === 0 && j === 0) continue;
+
+        if (i === 0) {
+          grid[i][j] += grid[i][j - 1];
+        } else if (j === 0) {
+          grid[i][j] += grid[i - 1][j];
+        } else {
+          grid[i][j] += Math.max(grid[i - 1][j], grid[i][j - 1]);
+        }
+      }
     }
-    return max
-};
+
+    return grid[row - 1][column - 1];
+  }
 
   return (
     <>
