@@ -1113,23 +1113,40 @@ function Result() {
   // }
 
   // 剑指 Offer 46. 把数字翻译成字符串
-  function translateNum(num: number): number {
-    const str = num.toString();
-    const n = str.length;
-    let prev = 1;
-    let cur = 1;
-    for (let i = 2; i < n + 1; i++) {
-      const temp = Number(str[i - 2] + str[i - 1]);
-      if (temp >= 10 && temp <= 25) {
-        const t = cur;
-        cur = prev + cur;
-        prev = t;
-      } else {
-        prev = cur;
-      }
-    }
-    return cur;
-  }
+  // function translateNum(num: number): number {
+  //   const str = num.toString();
+  //   const n = str.length;
+  //   let prev = 1;
+  //   let cur = 1;
+  //   for (let i = 2; i < n + 1; i++) {
+  //     const temp = Number(str[i - 2] + str[i - 1]);
+  //     if (temp >= 10 && temp <= 25) {
+  //       const t = cur;
+  //       cur = prev + cur;
+  //       prev = t;
+  //     } else {
+  //       prev = cur;
+  //     }
+  //   }
+  //   return cur;
+  // }
+
+  // 剑指 Offer 48. 最长不含重复字符的子字符串
+  // function lengthOfLongestSubstring(s: string): number {
+  //   const occ = new Map<string, number>();
+  //   let max = 0;
+  //   let start = 0;
+  //   for (let i = 0; i < s.length; i++) {
+  //     if (occ.has(s[i])) {
+  //       start = Math.max(start, occ.get(s[i]) + 1);
+  //     }
+  //     max = Math.max(max, i - start + 1);
+  //     occ.set(s[i], i);
+  //   }
+  //   return max;
+  // };
+
+
 
   return (
     <>
