@@ -1187,19 +1187,33 @@ function Result() {
   //   return head;
   // }
 
-  function deleteNode(head: ListNode | null, val: number): ListNode | null {
-    head = { next: head } as ListNode;
-    let p = head;
-    while (p.next) {
-      if (p.next.val === val) {
-        let target = p.next;
-        p.next = target.next;
-        target.next = null;
-        break;
-      }
-      p = p.next;
+  // function deleteNode(head: ListNode | null, val: number): ListNode | null {
+  //   head = { next: head } as ListNode;
+  //   let p = head;
+  //   while (p.next) {
+  //     if (p.next.val === val) {
+  //       let target = p.next;
+  //       p.next = target.next;
+  //       target.next = null;
+  //       break;
+  //     }
+  //     p = p.next;
+  //   }
+  //   return head.next;
+  // }
+
+  // 剑指 Offer 22. 链表中倒数第k个节点
+  function getKthFromEnd(head: ListNode | null, k: number): ListNode | null {
+    let fast = head,
+      slow = head;
+    while (k--) {
+      fast = fast.next;
     }
-    return head.next;
+    while (fast) {
+      fast = fast.next;
+      slow = slow.next;
+    }
+    return slow;
   }
 
   return (
