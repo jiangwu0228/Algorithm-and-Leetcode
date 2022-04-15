@@ -1146,26 +1146,45 @@ function Result() {
   //   return max;
   // };
 
-  function lengthOfLongestSubstring(s: string): number {
-    // hash map to store last occurrence of characters
-    const ooc = new Set();
-    const n = s.length;
-    // right pointer initialize to -1, it didn't point any character when the pointer is at the start of the left edge of the sliding window
-    let rk = -1,
-      ans = 0;
-    for (let i = 0; i < n; i++) {
-      if (i != 0) {
-        // remove the left edge of the sliding window
-        ooc.delete(s[i - 1]);
-      }
-      while (rk + 1 < n && !ooc.has(s[rk + 1])) {
-        // add the right edge of the sliding window
-        ooc.add(s[++rk]);
-      }
-      // update the answer
-      ans = Math.max(ans, rk - i + 1);
+  // function lengthOfLongestSubstring(s: string): number {
+  //   // hash map to store last occurrence of characters
+  //   const ooc = new Set();
+  //   const n = s.length;
+  //   // right pointer initialize to -1, it didn't point any character when the pointer is at the start of the left edge of the sliding window
+  //   let rk = -1,
+  //     ans = 0;
+  //   for (let i = 0; i < n; i++) {
+  //     if (i != 0) {
+  //       // remove the left edge of the sliding window
+  //       ooc.delete(s[i - 1]);
+  //     }
+  //     while (rk + 1 < n && !ooc.has(s[rk + 1])) {
+  //       // add the right edge of the sliding window
+  //       ooc.add(s[++rk]);
+  //     }
+  //     // update the answer
+  //     ans = Math.max(ans, rk - i + 1);
+  //   }
+  //   return ans;
+  // }
+
+  //剑指 Offer 18. 删除链表的节点
+  function deleteNode(head: ListNode | null, val: number): ListNode | null {
+    if (head === null) return null;
+
+    if (head.val === val) return head.next;
+
+    let current = head;
+
+    while (current.next && current.next.val !== val) {
+      current = current.next;
     }
-    return ans;
+
+    if (current.next) {
+      current.next = current.next.next;
+    }
+
+    return head;
   }
 
   return (
