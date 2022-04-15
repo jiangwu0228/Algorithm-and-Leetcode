@@ -1169,22 +1169,37 @@ function Result() {
   // }
 
   //剑指 Offer 18. 删除链表的节点
+  // function deleteNode(head: ListNode | null, val: number): ListNode | null {
+  //   if (head === null) return null;
+
+  //   if (head.val === val) return head.next;
+
+  //   let current = head;
+
+  //   while (current.next && current.next.val !== val) {
+  //     current = current.next;
+  //   }
+
+  //   if (current.next) {
+  //     current.next = current.next.next;
+  //   }
+
+  //   return head;
+  // }
+
   function deleteNode(head: ListNode | null, val: number): ListNode | null {
-    if (head === null) return null;
-
-    if (head.val === val) return head.next;
-
-    let current = head;
-
-    while (current.next && current.next.val !== val) {
-      current = current.next;
+    head = { next: head } as ListNode;
+    let p = head;
+    while (p.next) {
+      if (p.next.val === val) {
+        let target = p.next;
+        p.next = target.next;
+        target.next = null;
+        break;
+      }
+      p = p.next;
     }
-
-    if (current.next) {
-      current.next = current.next.next;
-    }
-
-    return head;
+    return head.next;
   }
 
   return (
