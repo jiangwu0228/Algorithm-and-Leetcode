@@ -1216,19 +1216,39 @@ function Result() {
   //   return slow;
   // }
   //剑指 Offer 25. 合并两个排序的链表
-  function mergeTwoLists(
-    l1: ListNode | null,
-    l2: ListNode | null
+  // function mergeTwoLists(
+  //   l1: ListNode | null,
+  //   l2: ListNode | null
+  // ): ListNode | null {
+  //   if (!l1) return l2;
+  //   if (!l2) return l1;
+  //   if (l1.val < l2.val) {
+  //     l1.next = mergeTwoLists(l1.next, l2);
+  //     return l1;
+  //   } else {
+  //     l2.next = mergeTwoLists(l1, l2.next);
+  //     return l2;
+  //   }
+  // }
+
+  //剑指 Offer 52. 两个链表的第一个公共节点
+  function getIntersectionNode(
+    headA: ListNode | null,
+    headB: ListNode | null
   ): ListNode | null {
-    if (!l1) return l2;
-    if (!l2) return l1;
-    if (l1.val < l2.val) {
-      l1.next = mergeTwoLists(l1.next, l2);
-      return l1;
-    } else {
-      l2.next = mergeTwoLists(l1, l2.next);
-      return l2;
+    // p1 指向 A 链表头结点，p2 指向 B 链表头结点
+    let p1: ListNode | null = headA,
+      p2: ListNode | null = headB;
+    while (p1 != p2) {
+      // p1 走一步，如果走到 A 链表末尾，转到 B 链表
+      if (p1 == null) p1 = headB;
+      else p1 = p1.next;
+      // p2 走一步，如果走到 B 链表末尾，转到 A 链表
+      if (p2 == null) p2 = headA;
+      else p2 = p2.next;
+      console.log("##:", p1, p2);
     }
+    return p1;
   }
 
   return (
