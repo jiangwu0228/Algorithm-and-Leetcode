@@ -1203,17 +1203,32 @@ function Result() {
   // }
 
   // 剑指 Offer 22. 链表中倒数第k个节点
-  function getKthFromEnd(head: ListNode | null, k: number): ListNode | null {
-    let fast = head,
-      slow = head;
-    while (k--) {
-      fast = fast.next;
+  // function getKthFromEnd(head: ListNode | null, k: number): ListNode | null {
+  //   let fast = head,
+  //     slow = head;
+  //   while (k--) {
+  //     fast = fast.next;
+  //   }
+  //   while (fast) {
+  //     fast = fast.next;
+  //     slow = slow.next;
+  //   }
+  //   return slow;
+  // }
+  //剑指 Offer 25. 合并两个排序的链表
+  function mergeTwoLists(
+    l1: ListNode | null,
+    l2: ListNode | null
+  ): ListNode | null {
+    if (!l1) return l2;
+    if (!l2) return l1;
+    if (l1.val < l2.val) {
+      l1.next = mergeTwoLists(l1.next, l2);
+      return l1;
+    } else {
+      l2.next = mergeTwoLists(l1, l2.next);
+      return l2;
     }
-    while (fast) {
-      fast = fast.next;
-      slow = slow.next;
-    }
-    return slow;
   }
 
   return (
