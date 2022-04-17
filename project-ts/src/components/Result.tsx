@@ -1252,24 +1252,37 @@ function Result() {
   // }
 
   //剑指 Offer 21. 调整数组顺序使奇数位于偶数前面
-  function exchange(nums: number[]): number[] {
-    let i = 0 // slow
-    let j = 0 // quick
+  //   function exchange(nums: number[]): number[] {
+  //     let i = 0 // slow
+  //     let j = 0 // quick
 
-    while (j < nums.length) {
-        // even
-        if (nums[j] % 2 === 0) {
-            j++
-        } else {
-            const temp = nums[i]
-            nums[i] = nums[j]
-            nums[j] = temp
-            i++
-            j++
-        }
+  //     while (j < nums.length) {
+  //         // even
+  //         if (nums[j] % 2 === 0) {
+  //             j++
+  //         } else {
+  //             const temp = nums[i]
+  //             nums[i] = nums[j]
+  //             nums[j] = temp
+  //             i++
+  //             j++
+  //         }
+  //     }
+  //     return nums
+  // };
+  //剑指 Offer 57. 和为s的两个数字
+  function twoSum(nums: number[], target: number): number[] {
+    let left = 0;
+    let right = nums.length - 1;
+    while (nums[left] + nums[right] !== target) {
+      if (nums[left] + nums[right] > target) {
+        right--;
+      } else if (nums[left] + nums[right] < target) {
+        left++;
+      }
     }
-    return nums
-};
+    return [nums[left], nums[right]];
+  }
 
   return (
     <>
