@@ -1271,17 +1271,22 @@ function Result() {
   //     return nums
   // };
   //剑指 Offer 57. 和为s的两个数字
-  function twoSum(nums: number[], target: number): number[] {
-    let left = 0;
-    let right = nums.length - 1;
-    while (nums[left] + nums[right] !== target) {
-      if (nums[left] + nums[right] > target) {
-        right--;
-      } else if (nums[left] + nums[right] < target) {
-        left++;
-      }
-    }
-    return [nums[left], nums[right]];
+  // function twoSum(nums: number[], target: number): number[] {
+  //   let left = 0;
+  //   let right = nums.length - 1;
+  //   while (nums[left] + nums[right] !== target) {
+  //     if (nums[left] + nums[right] > target) {
+  //       right--;
+  //     } else if (nums[left] + nums[right] < target) {
+  //       left++;
+  //     }
+  //   }
+  //   return [nums[left], nums[right]];
+  // }
+
+  //剑指 Offer 58 - I. 翻转单词顺序
+  function reverseWords(s: string): string {
+    return s.trim().split(/\s+/).reverse().join(" ");
   }
 
   return (
