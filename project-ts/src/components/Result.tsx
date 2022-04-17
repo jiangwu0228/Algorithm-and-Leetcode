@@ -1232,24 +1232,44 @@ function Result() {
   // }
 
   //剑指 Offer 52. 两个链表的第一个公共节点
-  function getIntersectionNode(
-    headA: ListNode | null,
-    headB: ListNode | null
-  ): ListNode | null {
-    // p1 指向 A 链表头结点，p2 指向 B 链表头结点
-    let p1: ListNode | null = headA,
-      p2: ListNode | null = headB;
-    while (p1 != p2) {
-      // p1 走一步，如果走到 A 链表末尾，转到 B 链表
-      if (p1 == null) p1 = headB;
-      else p1 = p1.next;
-      // p2 走一步，如果走到 B 链表末尾，转到 A 链表
-      if (p2 == null) p2 = headA;
-      else p2 = p2.next;
-      console.log("##:", p1, p2);
+  // function getIntersectionNode(
+  //   headA: ListNode | null,
+  //   headB: ListNode | null
+  // ): ListNode | null {
+  //   // p1 指向 A 链表头结点，p2 指向 B 链表头结点
+  //   let p1: ListNode | null = headA,
+  //     p2: ListNode | null = headB;
+  //   while (p1 != p2) {
+  //     // p1 走一步，如果走到 A 链表末尾，转到 B 链表
+  //     if (p1 == null) p1 = headB;
+  //     else p1 = p1.next;
+  //     // p2 走一步，如果走到 B 链表末尾，转到 A 链表
+  //     if (p2 == null) p2 = headA;
+  //     else p2 = p2.next;
+  //     console.log("##:", p1, p2);
+  //   }
+  //   return p1;
+  // }
+
+  //剑指 Offer 21. 调整数组顺序使奇数位于偶数前面
+  function exchange(nums: number[]): number[] {
+    let i = 0 // slow
+    let j = 0 // quick
+
+    while (j < nums.length) {
+        // even
+        if (nums[j] % 2 === 0) {
+            j++
+        } else {
+            const temp = nums[i]
+            nums[i] = nums[j]
+            nums[j] = temp
+            i++
+            j++
+        }
     }
-    return p1;
-  }
+    return nums
+};
 
   return (
     <>
