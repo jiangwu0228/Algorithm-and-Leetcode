@@ -1290,55 +1290,86 @@ function Result() {
   // }
 
   // 剑指 Offer 12. 矩阵中的路径
-  function exist(board: string[][], word: string): boolean {
-    const m = board.length;
-    const n = board[0].length;
-    const used = new Array(m); // 二维矩阵used，存放bool值
-    for (let i = 0; i < m; i++) {
-      used[i] = new Array(n);
-    }
-    // canFind 判断当前点是否是目标路径上的点
-    const canFind = (row, col, i) => {
-      // row col 当前点的坐标，i当前考察的word字符索引
-      if (i == word.length) {
-        // 递归的出口 i越界了就返回true
-        return true;
-      }
-      if (row < 0 || row >= m || col < 0 || col >= n) {
-        // 当前点越界 返回false
-        return false;
-      }
-      if (used[row][col] || board[row][col] != word[i]) {
-        // 当前点已经访问过，或，非目标点
-        return false;
-      }
-      // 排除掉所有false的情况，当前点暂时没毛病，可以继续递归考察
-      used[row][col] = true; // 记录一下当前点被访问了
-      // canFindRest：基于当前选择的点[row,col]，能否找到剩余字符的路径。
-      const canFindRest =
-        canFind(row + 1, col, i + 1) ||
-        canFind(row - 1, col, i + 1) ||
-        canFind(row, col + 1, i + 1) ||
-        canFind(row, col - 1, i + 1);
+  // function exist(board: string[][], word: string): boolean {
+  //   const m = board.length;
+  //   const n = board[0].length;
+  //   const used = new Array(m); // 二维矩阵used，存放bool值
+  //   for (let i = 0; i < m; i++) {
+  //     used[i] = new Array(n);
+  //   }
+  //   // canFind 判断当前点是否是目标路径上的点
+  //   const canFind = (row: number, col: number, i: number): boolean => {
+  //     // row col 当前点的坐标，i当前考察的word字符索引
+  //     if (i == word.length) {
+  //       // 递归的出口 i越界了就返回true
+  //       return true;
+  //     }
+  //     if (row < 0 || row >= m || col < 0 || col >= n) {
+  //       // 当前点越界 返回false
+  //       return false;
+  //     }
+  //     if (used[row][col] || board[row][col] != word[i]) {
+  //       // 当前点已经访问过，或，非目标点
+  //       return false;
+  //     }
+  //     // 排除掉所有false的情况，当前点暂时没毛病，可以继续递归考察
+  //     used[row][col] = true; // 记录一下当前点被访问了
+  //     // canFindRest：基于当前选择的点[row,col]，能否找到剩余字符的路径。
+  //     const canFindRest =
+  //       canFind(row + 1, col, i + 1) ||
+  //       canFind(row - 1, col, i + 1) ||
+  //       canFind(row, col + 1, i + 1) ||
+  //       canFind(row, col - 1, i + 1);
 
-      if (canFindRest) {
-        // 基于当前点[row,col]，可以为剩下的字符找到路径
-        return true;
-      }
-      used[row][col] = false; // 不能为剩下字符找到路径，返回false，撤销当前点的访问状态
-      return false;
-    };
+  //     if (canFindRest) {
+  //       // 基于当前点[row,col]，可以为剩下的字符找到路径
+  //       return true;
+  //     }
+  //     used[row][col] = false; // 不能为剩下字符找到路径，返回false，撤销当前点的访问状态
+  //     return false;
+  //   };
 
-    for (let i = 0; i < m; i++) {
-      // 遍历找起点，作为递归入口
-      for (let j = 0; j < n; j++) {
-        if (board[i][j] == word[0] && canFind(i, j, 0)) {
-          // 找到起点且递归结果为真，找到目标路径
-          return true;
-        }
+  //   for (let i = 0; i < m; i++) {
+  //     // 遍历找起点，作为递归入口
+  //     for (let j = 0; j < n; j++) {
+  //       if (board[i][j] == word[0] && canFind(i, j, 0)) {
+  //         // 找到起点且递归结果为真，找到目标路径
+  //         return true;
+  //       }
+  //     }
+  //   }
+  //   return false; // 怎么样都没有返回true，则返回false
+  // }
+
+  //剑指 Offer 13. 机器人的运动范围
+
+  function movingCount(m: number, n: number, k: number): number {
+    // visited 用来记录走过的格子，避免重复
+    const visited = Array(m)
+      .fill(0)
+      .map((_) => Array(n).fill(false));
+
+    // 辅助函数，计算位数和
+    function sum(n: number): number {
+      let res = 0;
+      while (n) {
+        res += n % 10;
+        n = Math.floor(n / 10);
+      }
+      return res;
+    }
+    // dfs
+    function dfs(x: number, y: number): number {
+      // 对应开头所说的三个终止条件，超过k值、到达边界、走过的格子
+      if (sum(x) + sum(y) > k || x >= m || y >= n || visited[x][y]) return 0;
+      else {
+        // 记录当前格子已经走过，返回当前计数 1 + 后续其他两个方向的总和
+        visited[x][y] = true;
+        return 1 + dfs(x + 1, y) + dfs(x, y + 1);
       }
     }
-    return false; // 怎么样都没有返回true，则返回false
+
+    return dfs(0, 0);
   }
 
   return (
