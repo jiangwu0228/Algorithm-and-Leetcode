@@ -1371,25 +1371,38 @@ function Result() {
   //   return dfs(0, 0);
   // }
   // 剑指 Offer 34. 二叉树中和为某一值的路径
-  function pathSum(root: TreeNode | null, targetSum: number): number[][] {
-    const res: number[][] = [];
-    const path: number[] = [];
-    function dfs(node: TreeNode | null, sum: number) {
+  // function pathSum(root: TreeNode | null, targetSum: number): number[][] {
+  //   const res: number[][] = [];
+  //   const path: number[] = [];
+  //   function dfs(node: TreeNode | null, sum: number) {
+  //     if (!node) return;
+  //     sum += node.val;
+  //     path.push(node.val);
+  //     if (!node.left && !node.right) {
+  //       if (sum === targetSum) {
+  //         res.push([...path]);
+  //       }
+  //     }
+  //     dfs(node.left, sum);
+  //     dfs(node.right, sum);
+  //     path.pop();
+  //   }
+  //   dfs(root, 0);
+  //   return res;
+  // }
+
+  //剑指 Offer 54. 二叉搜索树的第k大节点
+  function kthLargest(root: TreeNode | null, k: number): number {
+    const res: number[] = [];
+    function dfs(node: TreeNode | null) {
       if (!node) return;
-      sum += node.val;
-      path.push(node.val);
-      if (!node.left && !node.right) {
-        if (sum === targetSum) {
-          res.push([...path]);
-        }
-      }
-      dfs(node.left, sum);
-      dfs(node.right, sum);
-      path.pop();
+      dfs(node.right);
+      res.push(node.val);
+      dfs(node.left);
     }
-    dfs(root, 0);
-    return res;
-  }
+    dfs(root);
+    return res[k - 1];
+  };
 
   return (
     <>
