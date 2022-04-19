@@ -1343,33 +1343,52 @@ function Result() {
 
   //剑指 Offer 13. 机器人的运动范围
 
-  function movingCount(m: number, n: number, k: number): number {
-    // visited 用来记录走过的格子，避免重复
-    const visited = Array(m)
-      .fill(0)
-      .map((_) => Array(n).fill(false));
+  // function movingCount(m: number, n: number, k: number): number {
+  //   // visited 用来记录走过的格子，避免重复
+  //   const visited = Array(m)
+  //     .fill(0)
+  //     .map((_) => Array(n).fill(false));
 
-    // 辅助函数，计算位数和
-    function sum(n: number): number {
-      let res = 0;
-      while (n) {
-        res += n % 10;
-        n = Math.floor(n / 10);
+  //   // 辅助函数，计算位数和
+  //   function sum(n: number): number {
+  //     let res = 0;
+  //     while (n) {
+  //       res += n % 10;
+  //       n = Math.floor(n / 10);
+  //     }
+  //     return res;
+  //   }
+  //   // dfs
+  //   function dfs(x: number, y: number): number {
+  //     // 对应开头所说的三个终止条件，超过k值、到达边界、走过的格子
+  //     if (sum(x) + sum(y) > k || x >= m || y >= n || visited[x][y]) return 0;
+  //     else {
+  //       // 记录当前格子已经走过，返回当前计数 1 + 后续其他两个方向的总和
+  //       visited[x][y] = true;
+  //       return 1 + dfs(x + 1, y) + dfs(x, y + 1);
+  //     }
+  //   }
+  //   return dfs(0, 0);
+  // }
+  // 剑指 Offer 34. 二叉树中和为某一值的路径
+  function pathSum(root: TreeNode | null, targetSum: number): number[][] {
+    const res: number[][] = [];
+    const path: number[] = [];
+    function dfs(node: TreeNode | null, sum: number) {
+      if (!node) return;
+      sum += node.val;
+      path.push(node.val);
+      if (!node.left && !node.right) {
+        if (sum === targetSum) {
+          res.push([...path]);
+        }
       }
-      return res;
+      dfs(node.left, sum);
+      dfs(node.right, sum);
+      path.pop();
     }
-    // dfs
-    function dfs(x: number, y: number): number {
-      // 对应开头所说的三个终止条件，超过k值、到达边界、走过的格子
-      if (sum(x) + sum(y) > k || x >= m || y >= n || visited[x][y]) return 0;
-      else {
-        // 记录当前格子已经走过，返回当前计数 1 + 后续其他两个方向的总和
-        visited[x][y] = true;
-        return 1 + dfs(x + 1, y) + dfs(x, y + 1);
-      }
-    }
-
-    return dfs(0, 0);
+    dfs(root, 0);
+    return res;
   }
 
   return (
