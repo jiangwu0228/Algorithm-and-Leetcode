@@ -1392,17 +1392,27 @@ function Result() {
   // }
 
   //剑指 Offer 54. 二叉搜索树的第k大节点
-  function kthLargest(root: TreeNode | null, k: number): number {
-    const res: number[] = [];
-    function dfs(node: TreeNode | null) {
-      if (!node) return;
-      dfs(node.right);
-      res.push(node.val);
-      dfs(node.left);
-    }
-    dfs(root);
-    return res[k - 1];
-  };
+  // function kthLargest(root: TreeNode | null, k: number): number {
+  //   const res: number[] = [];
+  //   function dfs(node: TreeNode | null) {
+  //     if (!node) return;
+  //     dfs(node.right);
+  //     res.push(node.val);
+  //     dfs(node.left);
+  //   }
+  //   dfs(root);
+  //   return res[k - 1];
+  // };
+
+  // 剑指 Offer 45. 把数组排成最小的数
+  function minNumber(nums: number[]): string {
+    return nums
+      .sort((a, b) =>
+        Number(String(a) + String(b)) < Number(String(b) + String(a)) ? -1 : 1
+      )
+      .map((e) => String(e))
+      .join("");
+  }
 
   return (
     <>
