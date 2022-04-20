@@ -1405,13 +1405,22 @@ function Result() {
   // };
 
   // 剑指 Offer 45. 把数组排成最小的数
-  function minNumber(nums: number[]): string {
-    return nums
-      .sort((a, b) =>
-        Number(String(a) + String(b)) < Number(String(b) + String(a)) ? -1 : 1
-      )
-      .map((e) => String(e))
-      .join("");
+  // function minNumber(nums: number[]): string {
+  //   return nums
+  //     .sort((a, b) =>
+  //       Number(String(a) + String(b)) < Number(String(b) + String(a)) ? -1 : 1
+  //     )
+  //     .map((e) => String(e))
+  //     .join("");
+  // }
+  
+  // 剑指 Offer 61. 扑克牌中的顺子
+  function isStraight(nums: number[]): boolean {
+    nums = nums.filter(val => val !== 0).sort((a, b) => a - b)
+    const s = new Set(nums)
+    const min = nums[0]
+    const max = nums[nums.length - 1]
+    return max - min < 5 && s.size === nums.length
   }
 
   return (
