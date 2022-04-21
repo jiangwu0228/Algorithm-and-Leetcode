@@ -1430,40 +1430,73 @@ function Result() {
 
   // 剑指 Offer 41. 数据流中的中位数
   // sort in add method
+  // class MedianFinder {
+  //   arr: number[] = [];
+  //   constructor() {
+  //     this.arr = [];
+  //   }
+
+  //   addNum(num: number): void {
+  //     if (this.arr.length === 0) {
+  //       this.arr.push(num);
+  //     } else {
+  //       let left = 0,
+  //         right = this.arr.length - 1;
+  //       while (left <= right) {
+  //         const mid = Math.floor((left + right) / 2);
+  //         if (this.arr[mid] === num) {
+  //           this.arr.splice(mid, 0, num);
+  //           return;
+  //         } else if (this.arr[mid] > num) {
+  //           right = mid - 1;
+  //         } else {
+  //           left = mid + 1;
+  //         }
+  //       }
+  //       this.arr.splice(left, 0, num);
+  //     }
+  //   }
+
+  //   findMedian(): number {
+  //     const len = this.arr.length;
+  //     if (len % 2 === 0) {
+  //       return (this.arr[len / 2 - 1] + this.arr[len / 2]) / 2;
+  //     } else {
+  //       return this.arr[Math.floor(len / 2)];
+  //     }
+  //   }
+  // }
+
+  //剑指 Offer 41. 数据流中的中位数
+  // two pointers get median
   class MedianFinder {
     arr: number[] = [];
+    left: number;
+    right: number;
     constructor() {
       this.arr = [];
+      this.left = -1;
+      this.right = -1;
     }
 
     addNum(num: number): void {
-      if (this.arr.length === 0) {
-        this.arr.push(num);
+      if (!this.arr.length) {
+        this.left++;
+        this.right++;
       } else {
-        let left = 0,
-          right = this.arr.length - 1;
-        while (left <= right) {
-          const mid = Math.floor((left + right) / 2);
-          if (this.arr[mid] === num) {
-            this.arr.splice(mid, 0, num);
-            return;
-          } else if (this.arr[mid] > num) {
-            right = mid - 1;
-          } else {
-            left = mid + 1;
-          }
+        if (this.left === this.right) {
+          this.right++;
+        } else {
+          this.left++;
         }
-        this.arr.splice(left, 0, num);
       }
+      this.arr.push(num);
     }
 
     findMedian(): number {
-      const len = this.arr.length;
-      if (len % 2 === 0) {
-        return (this.arr[len / 2 - 1] + this.arr[len / 2]) / 2;
-      } else {
-        return this.arr[Math.floor(len / 2)];
-      }
+      if (!this.arr.length) return 0;
+      this.arr.sort((a, b) => a - b);
+      return (this.arr[this.left] + this.arr[this.right]) / 2;
     }
   }
 
