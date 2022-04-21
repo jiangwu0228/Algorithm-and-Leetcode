@@ -1424,8 +1424,47 @@ function Result() {
   // }
 
   // 剑指 Offer 40. 最小的k个数
-  function getLeastNumbers(arr: number[], k: number): number[] {
-    return arr.sort((a, b) => a - b).slice(0, k);
+  // function getLeastNumbers(arr: number[], k: number): number[] {
+  //   return arr.sort((a, b) => a - b).slice(0, k);
+  // }
+
+  // 剑指 Offer 41. 数据流中的中位数
+  // sort in add method
+  class MedianFinder {
+    arr: number[] = [];
+    constructor() {
+      this.arr = [];
+    }
+
+    addNum(num: number): void {
+      if (this.arr.length === 0) {
+        this.arr.push(num);
+      } else {
+        let left = 0,
+          right = this.arr.length - 1;
+        while (left <= right) {
+          const mid = Math.floor((left + right) / 2);
+          if (this.arr[mid] === num) {
+            this.arr.splice(mid, 0, num);
+            return;
+          } else if (this.arr[mid] > num) {
+            right = mid - 1;
+          } else {
+            left = mid + 1;
+          }
+        }
+        this.arr.splice(left, 0, num);
+      }
+    }
+
+    findMedian(): number {
+      const len = this.arr.length;
+      if (len % 2 === 0) {
+        return (this.arr[len / 2 - 1] + this.arr[len / 2]) / 2;
+      } else {
+        return this.arr[Math.floor(len / 2)];
+      }
+    }
   }
 
   return (
