@@ -1470,7 +1470,7 @@ function Result() {
   //剑指 Offer 41. 数据流中的中位数
   // two pointers get median
   // class MedianFinder {
-  //   arr: number[] = [];
+  //   arr: number[];
   //   left: number;
   //   right: number;
   //   constructor() {
@@ -1502,24 +1502,24 @@ function Result() {
 
   //剑指 Offer 41. 数据流中的中位数
   // Brute-force
-  class MedianFinder {
-    arr: number[] = [];
-    constructor() {
-      this.arr = [];
-    }
-    addNum(num: number): void {
-      this.arr.push(num);
-    }
-    findMedian(): number {
-      this.arr.sort((a, b) => a - b);
-      const len = this.arr.length;
-      if (len % 2 === 0) {
-        return (this.arr[len / 2 - 1] + this.arr[len / 2]) / 2;
-      } else {
-        return this.arr[Math.floor(len / 2)];
-      }
-    }
-  }
+  // class MedianFinder {
+  //   arr: number[] = [];
+  //   constructor() {
+  //     this.arr = [];
+  //   }
+  //   addNum(num: number): void {
+  //     this.arr.push(num);
+  //   }
+  //   findMedian(): number {
+  //     this.arr.sort((a, b) => a - b);
+  //     const len = this.arr.length;
+  //     if (len % 2 === 0) {
+  //       return (this.arr[len / 2 - 1] + this.arr[len / 2]) / 2;
+  //     } else {
+  //       return this.arr[Math.floor(len / 2)];
+  //     }
+  //   }
+  // }
 
   return (
     <>
