@@ -1527,20 +1527,26 @@ function Result() {
   // }
 
   //剑指 Offer 55 - II. 平衡二叉树
-  function isBalanced(root: TreeNode | null): boolean {
-    if (!root) return true;
-    const res = [];
-    function dfs(node: TreeNode | null) {
-      if (!node) return 0;
-      const left = dfs(node.left);
-      const right = dfs(node.right);
-      if (Math.abs(left - right) > 1) {
-        res.push(false);
-      }
-      return Math.max(left, right) + 1;
-    }
-    dfs(root);
-    return res.length === 0;
+  // function isBalanced(root: TreeNode | null): boolean {
+  //   if (!root) return true;
+  //   const res = [];
+  //   function dfs(node: TreeNode | null): number {
+  //     if (!node) return 0;
+  //     const left = dfs(node.left);
+  //     const right = dfs(node.right);
+  //     if (Math.abs(left - right) > 1) {
+  //       res.push(false);
+  //     }
+  //     return Math.max(left, right) + 1;
+  //   }
+  //   dfs(root);
+  //   return res.length === 0;
+  // }
+
+  //剑指 Offer 64. 求1+2+…+n
+  var sumNums = function (n: number): number {
+    n && (n += sumNums(n - 1));
+    return n;
   };
 
   return (
