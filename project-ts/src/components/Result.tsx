@@ -1544,10 +1544,22 @@ function Result() {
   // }
 
   //剑指 Offer 64. 求1+2+…+n
-  var sumNums = function (n: number): number {
-    n && (n += sumNums(n - 1));
-    return n;
-  };
+  // var sumNums = function (n: number): number {
+  //   n && (n += sumNums(n - 1));
+  //   return n;
+  // };
+
+  //剑指 Offer 68 - I. 二叉搜索树的最近公共祖先
+  function lowestCommonAncestor(
+    root: TreeNode | null,
+    p: TreeNode | null,
+    q: TreeNode | null
+  ): TreeNode | null {
+    if (!root || root === p || root === q) return root;
+    const left = lowestCommonAncestor(root.left, p, q);
+    const right = lowestCommonAncestor(root.right, p, q);
+    return left && right ? root : left || right;
+  }
 
   return (
     <>
