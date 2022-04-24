@@ -1631,20 +1631,30 @@ function Result() {
   //   return check(postorder, 0, postorder.length - 1);
   // }
   //单调栈
-  function verifyPostorder(postorder: number[]): boolean {
-    const stack = [];
-    let root = Number.MAX_SAFE_INTEGER;
-    let t: number | undefined;
-    for (let i = postorder.length - 1; i >= 0; --i) {
-      if (postorder[i] > root) return false;
-      while (stack.length && stack[stack.length - 1] > postorder[i]) {
-        t = stack.pop();
-        root = t === undefined ? root : t;
-      }
-      stack.push(postorder[i]);
+  // function verifyPostorder(postorder: number[]): boolean {
+  //   const stack = [];
+  //   let root = Number.MAX_SAFE_INTEGER;
+  //   let t: number | undefined;
+  //   for (let i = postorder.length - 1; i >= 0; --i) {
+  //     if (postorder[i] > root) return false;
+  //     while (stack.length && stack[stack.length - 1] > postorder[i]) {
+  //       t = stack.pop();
+  //       root = t === undefined ? root : t;
+  //     }
+  //     stack.push(postorder[i]);
+  //   }
+  //   return true;
+  // }
+
+  //191. 位1的个数
+  function hammingWeight(n: number): number {
+    let count = 0;
+    while (n) {
+      n &= n - 1;
+      count++;
     }
-    return true;
-  }
+    return count;
+  };
 
   return (
     <>
