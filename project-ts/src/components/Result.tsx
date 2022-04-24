@@ -1647,14 +1647,26 @@ function Result() {
   // }
 
   //191. 位1的个数
-  function hammingWeight(n: number): number {
-    let count = 0;
-    while (n) {
-      n &= n - 1;
-      count++;
+  // function hammingWeight(n: number): number {
+  //   let count = 0;
+  //   while (n) {
+  //     n &= n - 1;
+  //     count++;
+  //   }
+  //   return count;
+  // };
+
+  //剑指 Offer 65. 不用加减乘除做加法
+  function add(a: number, b: number): number {
+    while(b !== 0) {
+      const sum = a ^ b;
+      const carry = (a & b) << 1;
+      a = sum;
+      b = carry;
     }
-    return count;
+    return a;
   };
+
 
   return (
     <>
