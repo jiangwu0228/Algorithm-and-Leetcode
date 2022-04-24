@@ -1562,15 +1562,31 @@ function Result() {
   // }
 
   //剑指 Offer 68 - II. 二叉树的最近公共祖先
-  function lowestCommonAncestor(
-    root: TreeNode | null,
-    p: TreeNode | null,
-    q: TreeNode | null
-  ): TreeNode | null {
-    if (!root || root === p || root === q) return root;
-    const left: TreeNode | null = lowestCommonAncestor(root.left, p, q)
-    const right: TreeNode | null = lowestCommonAncestor(root.right, p, q)
-    return !left ? right : !right ? left : root
+  // function lowestCommonAncestor(
+  //   root: TreeNode | null,
+  //   p: TreeNode | null,
+  //   q: TreeNode | null
+  // ): TreeNode | null {
+  //   if (!root || root === p || root === q) return root;
+  //   const left: TreeNode | null = lowestCommonAncestor(root.left, p, q)
+  //   const right: TreeNode | null = lowestCommonAncestor(root.right, p, q)
+  //   return !left ? right : !right ? left : root
+  // }
+
+  // 剑指 Offer 07. 重建二叉树
+  function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
+    if (!preorder.length || !inorder.length) return null;
+    const root = new TreeNode(preorder[0]);
+    const index = inorder.indexOf(preorder[0]);
+    root.left = buildTree(
+      preorder.slice(1, index + 1),
+      inorder.slice(0, index)
+    );
+    root.right = buildTree(
+      preorder.slice(index + 1), 
+      inorder.slice(index + 1)
+      );
+    return root;
   }
 
   return (
