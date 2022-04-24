@@ -1590,17 +1590,45 @@ function Result() {
   // }
 
   // 剑指 Offer 16. 数值的整数次方
-  function myPow(x: number, n: number): number {
-    if (n === 0) return 1;
-    if (n === 1) return x;
-    if (n === -1) return 1 / x;
-    if (n % 2 === 0) {
-      let a = myPow(x, n / 2);
-      return a * a;
-    } else {
-      let b = myPow(x, (n - 1) / 2);
-      return b * b * x;
-    }
+  // function myPow(x: number, n: number): number {
+  //   if (n === 0) return 1;
+  //   if (n === 1) return x;
+  //   if (n === -1) return 1 / x;
+  //   if (n % 2 === 0) {
+  //     let a = myPow(x, n / 2);
+  //     return a * a;
+  //   } else {
+  //     let b = myPow(x, (n - 1) / 2);
+  //     return b * b * x;
+  //   }
+  // }
+
+  //剑指 Offer 33. 二叉搜索树的后序遍历序列
+  //递归分治法
+  function verifyPostorder(postorder: number[]): boolean {
+    const check = (
+      postorder: number[],
+      left: number,
+      right: number
+    ): boolean => {
+      if (left >= right) {
+        return true;
+      }
+      let i = left,
+        j = right - 1;
+      let node = postorder[right];
+      while (postorder[i] < node) {
+        i++;
+      }
+      while (postorder[j] > node) {
+        j--;
+      }
+      if (i < j) {
+        return false;
+      }
+      return check(postorder, left, j) && check(postorder, i, right - 1);
+    };
+    return check(postorder, 0, postorder.length - 1);
   }
 
   return (
