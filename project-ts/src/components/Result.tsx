@@ -1574,19 +1574,33 @@ function Result() {
   // }
 
   // 剑指 Offer 07. 重建二叉树
-  function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
-    if (!preorder.length || !inorder.length) return null;
-    const root = new TreeNode(preorder[0]);
-    const index = inorder.indexOf(preorder[0]);
-    root.left = buildTree(
-      preorder.slice(1, index + 1),
-      inorder.slice(0, index)
-    );
-    root.right = buildTree(
-      preorder.slice(index + 1), 
-      inorder.slice(index + 1)
-      );
-    return root;
+  // function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
+  //   if (!preorder.length || !inorder.length) return null;
+  //   const root = new TreeNode(preorder[0]);
+  //   const index = inorder.indexOf(preorder[0]);
+  //   root.left = buildTree(
+  //     preorder.slice(1, index + 1),
+  //     inorder.slice(0, index)
+  //   );
+  //   root.right = buildTree(
+  //     preorder.slice(index + 1),
+  //     inorder.slice(index + 1)
+  //     );
+  //   return root;
+  // }
+
+  // 剑指 Offer 16. 数值的整数次方
+  function myPow(x: number, n: number): number {
+    if (n === 0) return 1;
+    if (n === 1) return x;
+    if (n === -1) return 1 / x;
+    if (n % 2 === 0) {
+      let a = myPow(x, n / 2);
+      return a * a;
+    } else {
+      let b = myPow(x, (n - 1) / 2);
+      return b * b * x;
+    }
   }
 
   return (
