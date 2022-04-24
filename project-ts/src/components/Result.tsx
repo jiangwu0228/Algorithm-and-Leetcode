@@ -1605,30 +1605,45 @@ function Result() {
 
   //剑指 Offer 33. 二叉搜索树的后序遍历序列
   //递归分治法
+  // function verifyPostorder(postorder: number[]): boolean {
+  //   const check = (
+  //     postorder: number[],
+  //     left: number,
+  //     right: number
+  //   ): boolean => {
+  //     if (left >= right) {
+  //       return true;
+  //     }
+  //     let i = left,
+  //       j = right - 1;
+  //     let node = postorder[right];
+  //     while (postorder[i] < node) {
+  //       i++;
+  //     }
+  //     while (postorder[j] > node) {
+  //       j--;
+  //     }
+  //     if (i < j) {
+  //       return false;
+  //     }
+  //     return check(postorder, left, j) && check(postorder, i, right - 1);
+  //   };
+  //   return check(postorder, 0, postorder.length - 1);
+  // }
+  //单调栈
   function verifyPostorder(postorder: number[]): boolean {
-    const check = (
-      postorder: number[],
-      left: number,
-      right: number
-    ): boolean => {
-      if (left >= right) {
-        return true;
+    const stack = [];
+    let root = Number.MAX_SAFE_INTEGER;
+    let t: number | undefined;
+    for (let i = postorder.length - 1; i >= 0; --i) {
+      if (postorder[i] > root) return false;
+      while (stack.length && stack[stack.length - 1] > postorder[i]) {
+        t = stack.pop();
+        root = t === undefined ? root : t;
       }
-      let i = left,
-        j = right - 1;
-      let node = postorder[right];
-      while (postorder[i] < node) {
-        i++;
-      }
-      while (postorder[j] > node) {
-        j--;
-      }
-      if (i < j) {
-        return false;
-      }
-      return check(postorder, left, j) && check(postorder, i, right - 1);
-    };
-    return check(postorder, 0, postorder.length - 1);
+      stack.push(postorder[i]);
+    }
+    return true;
   }
 
   return (
