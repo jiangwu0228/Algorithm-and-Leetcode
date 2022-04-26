@@ -1680,19 +1680,51 @@ function Result() {
   //   return Array.from(map.keys());
   // };
 
-  function singleNumbers(nums: number[]): number[] {
-    const sum = nums.reduce((a, b) => a ^ b, 0);
-    const lowBit = sum & -sum;
-    const result: number[] = [];
-    for (let i = 0; i < nums.length; i++) {
-      if ((nums[i] & lowBit) === 0) {
-        result[0] ^= nums[i];
-      } else {
-        result[1] ^= nums[i];
-      }
+  // function singleNumbers(nums: number[]): number[] {
+  //   const sum = nums.reduce((a, b) => a ^ b, 0);
+  //   const lowBit = sum & -sum;
+  //   const result: number[] = [];
+  //   for (let i = 0; i < nums.length; i++) {
+  //     if ((nums[i] & lowBit) === 0) {
+  //       result[0] ^= nums[i];
+  //     } else {
+  //       result[1] ^= nums[i];
+  //     }
+  //   }
+  //   return result;
+  // }
+
+  // 剑指 Offer 56 - II. 数组中数字出现的次数 II
+  // HashMap
+  // function singleNumber(nums: number[]): number {
+  //   const map = new Map();
+  //   for (let i = 0; i < nums.length; i++) {
+  //     if (map.has(nums[i])) {
+  //       map.set(nums[i], map.get(nums[i]) + 1);
+  //     } else {
+  //       map.set(nums[i], 1);
+  //     }
+  //   }
+  //   for (let [key, value] of map) {
+  //     if (value === 1) {
+  //       return key;
+  //     }
+  //   }
+  // };
+
+  //math
+  function singleNumber(nums: number[]): number {
+    const set = new Set(nums);
+    let sum1 = 0;
+    for (let num of set) {
+      sum1 += num;
     }
-    return result;
-  }
+    let sum2 = 0;
+    for (let num of nums) {
+      sum2 += num;
+    }
+    return Math.floor((sum1 * 3 - sum2) / 2);;
+  };
 
   return (
     <>
