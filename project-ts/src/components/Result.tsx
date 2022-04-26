@@ -1713,18 +1713,33 @@ function Result() {
   // };
 
   //math
+  // function singleNumber(nums: number[]): number {
+  //   const set = new Set(nums);
+  //   let sum1 = 0;
+  //   for (let num of set) {
+  //     sum1 += num;
+  //   }
+  //   let sum2 = 0;
+  //   for (let num of nums) {
+  //     sum2 += num;
+  //   }
+  //   return Math.floor((sum1 * 3 - sum2) / 2);;
+  // };
+
+  // bitwise
   function singleNumber(nums: number[]): number {
-    const set = new Set(nums);
-    let sum1 = 0;
-    for (let num of set) {
-      sum1 += num;
+    let arr = new Array(32).fill(0);
+    for (let i = 0; i < nums.length; i++) {
+      for (let j = 0; j < 32; j++) {
+        arr[j] += (nums[i] >> j) & 1;
+      }
     }
-    let sum2 = 0;
-    for (let num of nums) {
-      sum2 += num;
+    let result = 0;
+    for (let i = 0; i < 32; i++) {
+      result += arr[i] % 3 << i;
     }
-    return Math.floor((sum1 * 3 - sum2) / 2);;
-  };
+    return result;
+  }
 
   return (
     <>
