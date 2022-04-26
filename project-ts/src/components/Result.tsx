@@ -1668,18 +1668,31 @@ function Result() {
   // };
 
   //剑指 Offer 56 - I. 数组中数字出现的次数
+  // function singleNumbers(nums: number[]): number[] {
+  //   const map = new Map();
+  //   for (let i = 0; i < nums.length; i++) {
+  //     if (map.has(nums[i])) {
+  //       map.delete(nums[i]);
+  //     } else {
+  //       map.set(nums[i], 1);
+  //     }
+  //   }
+  //   return Array.from(map.keys());
+  // };
+
   function singleNumbers(nums: number[]): number[] {
-    const map = new Map();
+    const sum = nums.reduce((a, b) => a ^ b, 0);
+    const lowBit = sum & -sum;
+    const result: number[] = [];
     for (let i = 0; i < nums.length; i++) {
-      if (map.has(nums[i])) {
-        map.delete(nums[i]);
+      if ((nums[i] & lowBit) === 0) {
+        result[0] ^= nums[i];
       } else {
-        map.set(nums[i], 1);
+        result[1] ^= nums[i];
       }
     }
-    return Array.from(map.keys());
-  };
-
+    return result;
+  }
 
   return (
     <>
