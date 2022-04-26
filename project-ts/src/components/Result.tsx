@@ -1657,14 +1657,27 @@ function Result() {
   // };
 
   //剑指 Offer 65. 不用加减乘除做加法
-  function add(a: number, b: number): number {
-    while(b !== 0) {
-      const sum = a ^ b;
-      const carry = (a & b) << 1;
-      a = sum;
-      b = carry;
+  // function add(a: number, b: number): number {
+  //   while(b !== 0) {
+  //     const sum = a ^ b;
+  //     const carry = (a & b) << 1;
+  //     a = sum;
+  //     b = carry;
+  //   }
+  //   return a;
+  // };
+
+  //剑指 Offer 56 - I. 数组中数字出现的次数
+  function singleNumbers(nums: number[]): number[] {
+    const map = new Map();
+    for (let i = 0; i < nums.length; i++) {
+      if (map.has(nums[i])) {
+        map.delete(nums[i]);
+      } else {
+        map.set(nums[i], 1);
+      }
     }
-    return a;
+    return Array.from(map.keys());
   };
 
 
