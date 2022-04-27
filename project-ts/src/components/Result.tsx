@@ -1801,31 +1801,45 @@ function Result() {
   //   return res;
   // }
 
-  function constructArr(nums: number[]): number[] {
-    if (!nums.length) return nums;
-    const length = nums.length;
-    const L = new Array<number>(length);
-    const R = new Array<number>(length);
-    const answer = new Array<number>(length);
-    //L[i] means the left product of L[i]
-    //cuz there is nothing in the left of L[0], so L[0] = 1
-    L[0] = 1;
-    for (let i = 1; i < length; i++) {
-      L[i] = L[i - 1] * nums[i - 1];
-    }
-    //R[i] means the right product of R[i]
-    //there is nothing in the right of R[length-1], so R[length-1] = 1
-    R[length - 1] = 1;
-    for (let i = length - 2; i >= 0; i--) {
-      R[i] = R[i + 1] * nums[i + 1];
-    }
-    //answer[i] means the product of left and right except nums[i]
-    for (let i = 0; i < length; i++) {
-      answer[i] = L[i] * R[i];
-    }
+  // function constructArr(nums: number[]): number[] {
+  //   if (!nums.length) return nums;
+  //   const length = nums.length;
+  //   const L = new Array<number>(length);
+  //   const R = new Array<number>(length);
+  //   const answer = new Array<number>(length);
+  //   //L[i] means the left product of L[i]
+  //   //cuz there is nothing in the left of L[0], so L[0] = 1
+  //   L[0] = 1;
+  //   for (let i = 1; i < length; i++) {
+  //     L[i] = L[i - 1] * nums[i - 1];
+  //   }
+  //   //R[i] means the right product of R[i]
+  //   //there is nothing in the right of R[length-1], so R[length-1] = 1
+  //   R[length - 1] = 1;
+  //   for (let i = length - 2; i >= 0; i--) {
+  //     R[i] = R[i + 1] * nums[i + 1];
+  //   }
+  //   //answer[i] means the product of left and right except nums[i]
+  //   for (let i = 0; i < length; i++) {
+  //     answer[i] = L[i] * R[i];
+  //   }
 
-    return answer;
-};
+  //   return answer;
+  // }
+
+  //461. Hamming Distance
+  function hammingDistance(x: number, y: number): number {
+    let count: number = 0;
+    let xBinary = x.toString(2);
+    let yBinary = y.toString(2);
+    const length = Math.max(xBinary.length, yBinary.length);
+    xBinary = xBinary.padStart(length, "0");
+    yBinary = yBinary.padStart(length, "0");
+    for (let i = 0; i < length; i++) {
+      if (xBinary[i] !== yBinary[i]) count++;
+    }
+    return count;
+  }
 
   return (
     <>
