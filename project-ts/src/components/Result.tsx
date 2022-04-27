@@ -1765,16 +1765,40 @@ function Result() {
   // }
 
   // using vote
-  function majorityElement(nums: number[]): number {
-    let candidate = 0,
-      vote = 0;
-    for (let item of nums) {
-      if (vote === 0) {
-        candidate = item;
-      }
-      vote += candidate === item ? +1 : -1;
+  // function majorityElement(nums: number[]): number {
+  //   let candidate = 0,
+  //     vote = 0;
+  //   for (let item of nums) {
+  //     if (vote === 0) {
+  //       candidate = item;
+  //     }
+  //     vote += candidate === item ? +1 : -1;
+  //   }
+  //   return candidate;
+  // }
+
+  //剑指 Offer 66. 构建乘积数组
+  // this is ordered array, must start from [1,2,...,n-1], aim array is aim[i]=[0]×A[1]×…×A[i-1]×A[i+1]×…×A[n-1]
+  function constructArr(nums: number[]): number[] {
+    //return [] if nums is empty
+    if (!nums.length) return nums;
+    // res[i] means the the left product of res[i]
+    // cuz there is nothing in the left of res[0], so res[0] = 1
+    const res: number[] = [1];
+    for (let i = 1; i < nums.length; i++) {
+      res[i] = res[i - 1] * nums[i - 1];
     }
-    return candidate;
+
+    // R means the right product of all elements
+    // there is nothing in the right of arr, so R = 1
+    let R = 1;
+    for (let i = nums.length - 1; i >= 0; i--) {
+      // for i, left product is res[i], right product is R
+      res[i] *= R;
+      // R need include all the product, so R = R * nums[i]
+      R *= nums[i];
+    }
+    return res;
   }
 
   return (
