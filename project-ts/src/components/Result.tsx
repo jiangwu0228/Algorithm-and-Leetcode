@@ -1727,18 +1727,36 @@ function Result() {
   // };
 
   // bitwise
-  function singleNumber(nums: number[]): number {
-    let arr = new Array(32).fill(0);
-    for (let i = 0; i < nums.length; i++) {
-      for (let j = 0; j < 32; j++) {
-        arr[j] += (nums[i] >> j) & 1;
+  // function singleNumber(nums: number[]): number {
+  //   let arr = new Array(32).fill(0);
+  //   for (let i = 0; i < nums.length; i++) {
+  //     for (let j = 0; j < 32; j++) {
+  //       arr[j] += (nums[i] >> j) & 1;
+  //     }
+  //   }
+  //   let result = 0;
+  //   for (let i = 0; i < 32; i++) {
+  //     result += arr[i] % 3 << i;
+  //   }
+  //   return result;
+  // }
+
+  // /剑指 Offer 39. 数组中出现次数超过一半的数字
+  // using map
+  function majorityElement(nums: number[]): number {
+    const map = new Map();
+    const count = nums.length / 2;
+    if (nums.length === 1) return nums[0];
+    for (let num of nums) {
+      if (!map.has(num)) {
+        map.set(num, 1);
+      } else {
+        let counts = map.get(num);
+        counts++;
+        map.set(num, counts);
+        if (counts > count) return num;
       }
     }
-    let result = 0;
-    for (let i = 0; i < 32; i++) {
-      result += arr[i] % 3 << i;
-    }
-    return result;
   }
 
   return (
