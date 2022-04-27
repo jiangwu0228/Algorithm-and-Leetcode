@@ -1828,15 +1828,27 @@ function Result() {
   // }
 
   //461. Hamming Distance
+  // function hammingDistance(x: number, y: number): number {
+  //   let count: number = 0;
+  //   let xBinary = x.toString(2);
+  //   let yBinary = y.toString(2);
+  //   const length = Math.max(xBinary.length, yBinary.length);
+  //   xBinary = xBinary.padStart(length, "0");
+  //   yBinary = yBinary.padStart(length, "0");
+  //   for (let i = 0; i < length; i++) {
+  //     if (xBinary[i] !== yBinary[i]) count++;
+  //   }
+  //   return count;
+  // }
+
+  // XOR operation in an array
+  // 1 means true, they are different
   function hammingDistance(x: number, y: number): number {
-    let count: number = 0;
-    let xBinary = x.toString(2);
-    let yBinary = y.toString(2);
-    const length = Math.max(xBinary.length, yBinary.length);
-    xBinary = xBinary.padStart(length, "0");
-    yBinary = yBinary.padStart(length, "0");
-    for (let i = 0; i < length; i++) {
-      if (xBinary[i] !== yBinary[i]) count++;
+    let a = x ^ y;
+    let count = 0;
+    while (a) {
+      count++;
+      a = a & a - 1;
     }
     return count;
   }
