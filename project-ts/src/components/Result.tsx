@@ -1778,28 +1778,54 @@ function Result() {
   // }
 
   //剑指 Offer 66. 构建乘积数组
-  // this is ordered array, must start from [1,2,...,n-1], aim array is aim[i]=[0]×A[1]×…×A[i-1]×A[i+1]×…×A[n-1]
+  // // this is ordered array, must start from [1,2,...,n-1], aim array is aim[i]=[0]×A[1]×…×A[i-1]×A[i+1]×…×A[n-1]
+  // function constructArr(nums: number[]): number[] {
+  //   //return [] if nums is empty
+  //   if (!nums.length) return nums;
+  //   // res[i] means the the left product of res[i]
+  //   // cuz there is nothing in the left of res[0], so res[0] = 1
+  //   const res: number[] = [1];
+  //   for (let i = 1; i < nums.length; i++) {
+  //     res[i] = res[i - 1] * nums[i - 1];
+  //   }
+
+  //   // R means the right product of all elements
+  //   // there is nothing in the right of arr, so R = 1
+  //   let R = 1;
+  //   for (let i = nums.length - 1; i >= 0; i--) {
+  //     // for i, left product is res[i], right product is R
+  //     res[i] *= R;
+  //     // R need include all the product, so R = R * nums[i]
+  //     R *= nums[i];
+  //   }
+  //   return res;
+  // }
+
   function constructArr(nums: number[]): number[] {
-    //return [] if nums is empty
     if (!nums.length) return nums;
-    // res[i] means the the left product of res[i]
-    // cuz there is nothing in the left of res[0], so res[0] = 1
-    const res: number[] = [1];
-    for (let i = 1; i < nums.length; i++) {
-      res[i] = res[i - 1] * nums[i - 1];
+    const length = nums.length;
+    const L = new Array<number>(length);
+    const R = new Array<number>(length);
+    const answer = new Array<number>(length);
+    //L[i] means the left product of L[i]
+    //cuz there is nothing in the left of L[0], so L[0] = 1
+    L[0] = 1;
+    for (let i = 1; i < length; i++) {
+      L[i] = L[i - 1] * nums[i - 1];
+    }
+    //R[i] means the right product of R[i]
+    //there is nothing in the right of R[length-1], so R[length-1] = 1
+    R[length - 1] = 1;
+    for (let i = length - 2; i >= 0; i--) {
+      R[i] = R[i + 1] * nums[i + 1];
+    }
+    //answer[i] means the product of left and right except nums[i]
+    for (let i = 0; i < length; i++) {
+      answer[i] = L[i] * R[i];
     }
 
-    // R means the right product of all elements
-    // there is nothing in the right of arr, so R = 1
-    let R = 1;
-    for (let i = nums.length - 1; i >= 0; i--) {
-      // for i, left product is res[i], right product is R
-      res[i] *= R;
-      // R need include all the product, so R = R * nums[i]
-      R *= nums[i];
-    }
-    return res;
-  }
+    return answer;
+};
 
   return (
     <>
