@@ -1743,20 +1743,25 @@ function Result() {
 
   // /剑指 Offer 39. 数组中出现次数超过一半的数字
   // using map
+  // function majorityElement(nums: number[]): number {
+  //   const map = new Map();
+  //   const count = nums.length / 2;
+  //   if (nums.length === 1) return nums[0];
+  //   for (let num of nums) {
+  //     if (!map.has(num)) {
+  //       map.set(num, 1);
+  //     } else {
+  //       let counts = map.get(num);
+  //       counts++;
+  //       map.set(num, counts);
+  //       if (counts > count) return num;
+  //     }
+  //   }
+  // }
+
+  // using sort and return the middle
   function majorityElement(nums: number[]): number {
-    const map = new Map();
-    const count = nums.length / 2;
-    if (nums.length === 1) return nums[0];
-    for (let num of nums) {
-      if (!map.has(num)) {
-        map.set(num, 1);
-      } else {
-        let counts = map.get(num);
-        counts++;
-        map.set(num, counts);
-        if (counts > count) return num;
-      }
-    }
+    return nums.sort((a, b) => a - b)[Math.floor(nums.length / 2)];
   }
 
   return (
