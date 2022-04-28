@@ -1854,16 +1854,60 @@ function Result() {
   // }
 
   //剑指 Offer 14- I. 剪绳子
-  function cuttingRope(n: number): number {
-    if (n === 2) return 1;
-    if (n === 3) return 2;
-    let res = 1;
-    while (n > 4) {
-      res *= 3;
-      n -= 3;
+  // function cuttingRope(n: number): number {
+  //   if (n === 2) return 1;
+  //   if (n === 3) return 2;
+  //   let res = 1;
+  //   while (n > 4) {
+  //     res *= 3;
+  //     n -= 3;
+  //   }
+  //   return res * n;
+  // };
+
+  //剑指 Offer 57 - II. 和为s的连续正数序列
+  //let left = 0, right = 0;
+
+  // while (right < s.size()) {
+  //     // 增大窗口
+  //     window.add(s[right]);
+  //     right++;
+
+  //     while (window needs shrink) {
+  //         // 缩小窗口
+  //         window.remove(s[left]);
+  //         left++;
+  //     }
+  // }
+
+  function findContinuousSequence(target: number): number[][] {
+    let res: number[][] = [];
+    let l = 1;
+    let r = 2;
+    let sum = 3;
+    // 滑动窗口框架
+    while (l < r) {
+      if (sum === target) {
+        let ans = [];
+        for (let k = l; k <= r; k++) {
+          ans[k - l] = k;
+        }
+        res.push(ans);
+        // 等于的情况 我们可以继续窗口往右搜索 同时缩小左边的
+        sum = sum - l;
+        l++;
+      } else if (sum > target) {
+        // 大于的条件 缩小窗口 sum已经加过了
+        sum = sum - l;
+        l++;
+      } else {
+        // 小于的情况 滑动窗口继续扩大
+        r++;
+        sum = sum + r;
+      }
     }
-    return res * n;
-  };
+    return res;
+  }
 
   return (
     <>
