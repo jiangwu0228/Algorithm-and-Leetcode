@@ -1843,15 +1843,27 @@ function Result() {
 
   // XOR operation in an array
   // 1 means true, they are different
-  function hammingDistance(x: number, y: number): number {
-    let a = x ^ y;
-    let count = 0;
-    while (a) {
-      count++;
-      a = a & a - 1;
+  // function hammingDistance(x: number, y: number): number {
+  //   let a = x ^ y;
+  //   let count = 0;
+  //   while (a) {
+  //     count++;
+  //     a = a & a - 1;
+  //   }
+  //   return count;
+  // }
+
+  //剑指 Offer 14- I. 剪绳子
+  function cuttingRope(n: number): number {
+    if (n === 2) return 1;
+    if (n === 3) return 2;
+    let res = 1;
+    while (n > 4) {
+      res *= 3;
+      n -= 3;
     }
-    return count;
-  }
+    return res * n;
+  };
 
   return (
     <>
