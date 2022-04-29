@@ -1948,6 +1948,20 @@ function Result() {
     return res;
   }
 
+  // 剑指 Offer 31. 栈的压入、弹出序列
+  function validateStackSequences(pushed: number[], popped: number[]): boolean {
+    let stack: number[] = [];
+    let i = 0;
+    for (let num of pushed) {
+      stack.push(num);
+      while (stack.length && stack[stack.length - 1] === popped[i]) {
+        stack.pop();
+        i++;
+      }
+    }
+    return !stack.length;
+  };
+
   return (
     <>
       <iframe
