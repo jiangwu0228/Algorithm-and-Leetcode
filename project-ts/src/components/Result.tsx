@@ -1916,7 +1916,37 @@ function Result() {
       res = (res + m) % i;
     }
     return res;
-  };
+  }
+
+  //剑指 Offer 29. 顺时针打印矩阵
+  function spiralOrder(matrix: number[][]): number[] {
+    if (!matrix.length || !matrix[0].length) return []; //空数组
+    const res: number[] = [];
+    const rows = matrix.length,
+      colums = matrix[0].length;
+    let left = 0,
+      right = colums - 1,
+      top = 0,
+      bottom = rows - 1;
+    while (left <= right && top <= bottom) {
+      for (let column = left; column <= right; column++) {
+        res.push(matrix[top][column]);
+      }
+      for (let row = top + 1; row <= bottom; row++) {
+        res.push(matrix[row][right]);
+      }
+      if (left < right && top < bottom) {
+        for (let column = right - 1; column > left; column--) {
+          res.push(matrix[bottom][column]);
+        }
+        for (let row = bottom; row > top; row--) {
+          res.push(matrix[row][left]);
+        }
+      }
+      [left, right, top, bottom] = [left + 1, right - 1, top + 1, bottom - 1];
+    }
+    return res;
+  }
 
   return (
     <>
