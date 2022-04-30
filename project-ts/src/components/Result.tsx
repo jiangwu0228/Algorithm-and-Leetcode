@@ -1960,7 +1960,14 @@ function Result() {
       }
     }
     return !stack.length;
-  };
+  }
+
+  // 剑指 Offer 20. 表示数值的字符串
+  function isNumber(s: string): boolean {
+    return /^[\+\-]?((\d+(\.\d*)?)|\.\d+)([eE][-+]?\d+)?$/.test(s.trim());
+  }
+
+
 
   return (
     <>
