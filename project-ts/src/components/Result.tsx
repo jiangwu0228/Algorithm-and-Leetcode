@@ -1967,7 +1967,22 @@ function Result() {
     return /^[\+\-]?((\d+(\.\d*)?)|\.\d+)([eE][-+]?\d+)?$/.test(s.trim());
   }
 
-
+  //剑指 Offer 67. 把字符串转换成整数
+  function strToInt(str: string): number {
+    let min = -(2 ** 31),
+      max = 2 ** 31 - 1;
+    let result = parseInt(str);
+    if (isNaN(result)) {
+      result = 0;
+    }
+    //超出限制的情况
+    if (result < min) {
+      result = min;
+    } else if (result > max) {
+      result = max;
+    }
+    return result;
+  }
 
   return (
     <>
