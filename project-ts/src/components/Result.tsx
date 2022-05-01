@@ -2005,6 +2005,34 @@ function Result() {
     return res;
   }
 
+  // 剑指 Offer 59 - II. 队列的最大值
+  class MaxQueue {
+    Queue: number[] = [];
+
+    constructor() {
+      this.Queue = [];
+    }
+
+    max_value(): number {
+      let max = 0;
+      for (let i = 0; i < this.Queue.length; i++) {
+        max = Math.max(max, this.Queue[i]);
+      }
+      return this.Queue.length ? max : -1;
+    }
+
+    push_back(value: number): void {
+      this.Queue.unshift(value);
+    }
+
+    pop_front(): number {
+      if (this.Queue.length) {
+        return this.Queue.pop();
+      }
+      return -1;
+    }
+  }
+
   return (
     <>
       <iframe
