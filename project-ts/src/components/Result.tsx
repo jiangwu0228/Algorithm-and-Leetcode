@@ -1984,6 +1984,27 @@ function Result() {
     return result;
   }
 
+  // 剑指 Offer 59 - I. 滑动窗口的最大值
+  function maxSlidingWindow(nums: number[], k: number): number[] {
+    // 结果数组
+    let res: number[] = [];
+    // 队列数组（存放的是元素下标，为了取值方便）
+    let queue: number[] = [];
+    for (let i = 0; i < nums.length; i++) {
+      if (queue.length && queue[0] <= i - k) {
+        queue.shift();
+      }
+      while (queue.length && nums[queue[queue.length - 1]] < nums[i]) {
+        queue.pop();
+      }
+      queue.push(i);
+      if (i >= k - 1) {
+        res.push(nums[queue[0]]);
+      }
+    }
+    return res;
+  }
+
   return (
     <>
       <iframe
