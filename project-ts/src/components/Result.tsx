@@ -2034,58 +2034,82 @@ function Result() {
   // }
 
   // 剑指 Offer 37. 序列化二叉树
-/**
- * Definition for a binary tree node.
- * class TreeNode {
- *     val: number
- *     left: TreeNode | null
- *     right: TreeNode | null
- *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.left = (left===undefined ? null : left)
- *         this.right = (right===undefined ? null : right)
- *     }
- * }
- */
+  /**
+   * Definition for a binary tree node.
+   * class TreeNode {
+   *     val: number
+   *     left: TreeNode | null
+   *     right: TreeNode | null
+   *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+   *         this.val = (val===undefined ? 0 : val)
+   *         this.left = (left===undefined ? null : left)
+   *         this.right = (right===undefined ? null : right)
+   *     }
+   * }
+   */
 
-/*
- * Encodes a tree to a single string.
- */
-function serialize(root: TreeNode | null): string {
-  const arr = [];
-  function dfs(root: TreeNode) {
-    if (!root) {
-      return arr.push('null')
-    }
-    arr.push(root.val)
-    dfs(root.left)
-    dfs(root.right)
+  /*
+   * Encodes a tree to a single string.
+   */
+  // function serialize(root: TreeNode | null): string {
+  //   const arr = [];
+  //   function dfs(root: TreeNode) {
+  //     if (!root) {
+  //       return arr.push('null')
+  //     }
+  //     arr.push(root.val)
+  //     dfs(root.left)
+  //     dfs(root.right)
+  //   }
+  //   dfs(root)
+  //   return arr.join(',')
+  // };
+
+  // /*
+  //  * Decodes your encoded data to tree.
+  //  */
+  // function deserialize(data: string): TreeNode | null {
+  //   const arr = data.split(',').reverse(); // 反转后用pop来弹出当前子树根节点
+  //   function dfs(arr: string[]) {
+  //     const val = arr.pop(); // pop效率比shift好，因为shift操作需要调整全部数组元素，而pop只需要操作一个数组元素。
+  //     if (val === 'null') return null;
+  //     const root = new TreeNode(Number(val))
+  //     root.left = dfs(arr)
+  //     root.right = dfs(arr)
+  //     return root
+  //   }
+  //   return dfs(arr)
+  // };
+
+  // 剑指 Offer 38. 字符串的排列
+  function permutation(s: string): string[] {
+    const n = s.length,
+      res = [];
+    const stateArr = Array(n).fill(false);
+    const ss = s.split("").sort().join("");
+    const dfs = (str) => {
+      if (str.length === n) {
+        res.push(str);
+        return;
+      }
+      for (let i = 0; i < n; i++) {
+        if (stateArr[i]) continue;
+        if (i > 0 && ss[i - 1] === ss[i] && !stateArr[i - 1]) continue;
+        stateArr[i] = true;
+        str += ss[i];
+        dfs(str);
+        stateArr[i] = false;
+        str = str.slice(0, str.length - 1);
+      }
+    };
+    dfs("");
+    return res;
   }
-  dfs(root)
-  return arr.join(',')
-};
 
-/*
- * Decodes your encoded data to tree.
- */
-function deserialize(data: string): TreeNode | null {
-  const arr = data.split(',').reverse(); // 反转后用pop来弹出当前子树根节点
-  function dfs(arr: string[]) {
-    const val = arr.pop(); // pop效率比shift好，因为shift操作需要调整全部数组元素，而pop只需要操作一个数组元素。
-    if (val === 'null') return null;
-    const root = new TreeNode(Number(val))
-    root.left = dfs(arr)
-    root.right = dfs(arr)
-    return root
-  }
-  return dfs(arr)
-};
-
-
-/**
- * Your functions will be called as such:
- * deserialize(serialize(root));
- */
+  /**
+   * Your functions will be called as such:
+   * deserialize(serialize(root));
+   */
 
   return (
     <>
