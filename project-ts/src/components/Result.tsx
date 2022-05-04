@@ -2117,11 +2117,11 @@ function Result() {
   //   for (let idx = 0; idx < dp.length; idx++) {
   //     dp[idx] = new Array<boolean>(pLen+1).fill(false);
   //   }
-  
+
   //   const isMatchIdx: (sIdx: number, pIdx: number) => boolean = (sIdx, pIdx) => {
   //     return p[pIdx-2] === s[sIdx-1] || p[pIdx-2] === '.';
   //   }
-  
+
   //   // 初始化 dp
   //   dp[0][0] = true;
   //   for(let j = 2; j <= pLen; j += 2) {
@@ -2129,7 +2129,7 @@ function Result() {
   //     //当s不为空，p为空为false
   //     dp[0][j] = dp[0][j - 2] && p[j - 1] == '*';
   //   }
-  
+
   //   for (let i = 1; i < sLen+1; i++) {
   //     for (let j = 0; j < pLen+1; j++) {
   //       if (p[j-1] === '*') {
@@ -2182,7 +2182,7 @@ function Result() {
   //   return false;
   // }
 
-    //剑指 Offer 49. 丑数
+  //剑指 Offer 49. 丑数
   // function nthUglyNumber(n: number): number {
   //   const dp = new Array(n + 1).fill(0);
   //   dp[1] = 1;
@@ -2203,7 +2203,7 @@ function Result() {
   //   return dp[n];
   // };
 
-    // 剑指 Offer 60. n个骰子的点数
+  // 剑指 Offer 60. n个骰子的点数
   //   function dicesProbability(n: number): number[] {
   //     const dp = new Array(n + 1).fill(0).map(i => new Array(n * 6).fill(0));
   //     for (let i = 1; i <= n; i++) {
@@ -2224,17 +2224,23 @@ function Result() {
 
   // 剑指 Offer 17. 打印从1到最大的n位数
   function printNumbers(n: number): number[] {
+    // const res: number[] = [];
+    // let max = 0;
+    // for (let i = 1; i <= n; i++) {
+    //   max *= 10;
+    //   max += 9;
+    // }
+    // for (let i = 1; i <= max; i++) {
+    //   res.push(i);
+    // }
+    // return res;
+
     const res: number[] = [];
-    let max = 0;
-    for (let i = 1; i <= n; i++) {
-      max *= 10;
-      max += 9;
-    }
-    for (let i = 1; i <= max; i++) {
+    for (let i = 1; i <= Math.pow(10, n); i++) {
       res.push(i);
     }
     return res;
-  };
+  }
 
   return (
     <>
