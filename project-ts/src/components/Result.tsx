@@ -2204,22 +2204,36 @@ function Result() {
   // };
 
     // 剑指 Offer 60. n个骰子的点数
-    function dicesProbability(n: number): number[] {
-      const dp = new Array(n + 1).fill(0).map(i => new Array(n * 6).fill(0));
-      for (let i = 1; i <= n; i++) {
-        dp[i][i] = Math.pow(1 / 6, i);
-      }
-      dp[0][0] = 1;
-      for (let i = 1; i <= n; i++) {
-        for (let j = i; j <= 6 * i; j++) {
-          let pre = 0
-          for (let k = 1; j - k >= 0 && k <= 6; k++) {
-            pre += dp[i - 1][j - k];
-          }
-          dp[i][j] = pre * (1 / 6);
-        }
-      }
-      return dp[n].slice(n);
+  //   function dicesProbability(n: number): number[] {
+  //     const dp = new Array(n + 1).fill(0).map(i => new Array(n * 6).fill(0));
+  //     for (let i = 1; i <= n; i++) {
+  //       dp[i][i] = Math.pow(1 / 6, i);
+  //     }
+  //     dp[0][0] = 1;
+  //     for (let i = 1; i <= n; i++) {
+  //       for (let j = i; j <= 6 * i; j++) {
+  //         let pre = 0
+  //         for (let k = 1; j - k >= 0 && k <= 6; k++) {
+  //           pre += dp[i - 1][j - k];
+  //         }
+  //         dp[i][j] = pre * (1 / 6);
+  //       }
+  //     }
+  //     return dp[n].slice(n);
+  // };
+
+  // 剑指 Offer 17. 打印从1到最大的n位数
+  function printNumbers(n: number): number[] {
+    const res: number[] = [];
+    let max = 0;
+    for (let i = 1; i <= n; i++) {
+      max *= 10;
+      max += 9;
+    }
+    for (let i = 1; i <= max; i++) {
+      res.push(i);
+    }
+    return res;
   };
 
   return (
