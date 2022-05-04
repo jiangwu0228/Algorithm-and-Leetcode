@@ -2107,49 +2107,48 @@ function Result() {
   // }
 
   // 剑指 Offer 19. 正则表达式匹配
-  function isMatch(s: string, p: string): boolean {
-    //递归
-    // return isMatchIdx(s, p, 0, 0);
-    //动态规划
-    const sLen = s.length;
-    const pLen = p.length;
-    const dp = new Array<boolean[]>(sLen+1);
-    for (let idx = 0; idx < dp.length; idx++) {
-      dp[idx] = new Array<boolean>(pLen+1).fill(false);
-    }
+  // function isMatch(s: string, p: string): boolean {
+  //   //递归
+  //   // return isMatchIdx(s, p, 0, 0);
+  //   //动态规划
+  //   const sLen = s.length;
+  //   const pLen = p.length;
+  //   const dp = new Array<boolean[]>(sLen+1);
+  //   for (let idx = 0; idx < dp.length; idx++) {
+  //     dp[idx] = new Array<boolean>(pLen+1).fill(false);
+  //   }
   
-    const isMatchIdx: (sIdx: number, pIdx: number) => boolean = (sIdx, pIdx) => {
-      return p[pIdx-2] === s[sIdx-1] || p[pIdx-2] === '.';
-    }
+  //   const isMatchIdx: (sIdx: number, pIdx: number) => boolean = (sIdx, pIdx) => {
+  //     return p[pIdx-2] === s[sIdx-1] || p[pIdx-2] === '.';
+  //   }
   
-    // 初始化 dp
-    dp[0][0] = true;
-    for(let j = 2; j <= pLen; j += 2) {
-      //当s为空时，p必须满足a*b*.*这样的结构才能匹配成空串
-      //当s不为空，p为空为false
-      dp[0][j] = dp[0][j - 2] && p[j - 1] == '*';
-    }
+  //   // 初始化 dp
+  //   dp[0][0] = true;
+  //   for(let j = 2; j <= pLen; j += 2) {
+  //     //当s为空时，p必须满足a*b*.*这样的结构才能匹配成空串
+  //     //当s不为空，p为空为false
+  //     dp[0][j] = dp[0][j - 2] && p[j - 1] == '*';
+  //   }
   
-    for (let i = 1; i < sLen+1; i++) {
-      for (let j = 0; j < pLen+1; j++) {
-        if (p[j-1] === '*') {
-          if (isMatchIdx(i, j)) {
-            dp[i][j] = dp[i][j-2] || dp[i-1][j];
-          } else {
-            dp[i][j] = dp[i][j-2];
-          }
-        } else {
-          if (isMatchIdx(i, j+1)) {
-            dp[i][j] = dp[i-1][j-1];
-          } else {
-            dp[i][j] =false;
-          }
-        }
-      }
-    }
-  
-    return dp[sLen][pLen];
-  }
+  //   for (let i = 1; i < sLen+1; i++) {
+  //     for (let j = 0; j < pLen+1; j++) {
+  //       if (p[j-1] === '*') {
+  //         if (isMatchIdx(i, j)) {
+  //           dp[i][j] = dp[i][j-2] || dp[i-1][j];
+  //         } else {
+  //           dp[i][j] = dp[i][j-2];
+  //         }
+  //       } else {
+  //         if (isMatchIdx(i, j+1)) {
+  //           dp[i][j] = dp[i-1][j-1];
+  //         } else {
+  //           dp[i][j] =false;
+  //         }
+  //       }
+  //     }
+  //   }
+  //   return dp[sLen][pLen];
+  // }
 
   // function isMatchIdx(
   //   s: string,
@@ -2182,6 +2181,29 @@ function Result() {
 
   //   return false;
   // }
+
+    //剑指 Offer 49. 丑数
+  function nthUglyNumber(n: number): number {
+    const dp = new Array(n + 1).fill(0);
+    dp[1] = 1;
+    let p2 = 1, p3 = 1, p5 = 1;
+    for (let i = 2; i <= n; i++) {
+        const num2 = dp[p2] * 2, num3 = dp[p3] * 3, num5 = dp[p5] * 5;
+        dp[i] = Math.min(Math.min(num2, num3), num5);
+        if (dp[i] === num2) {
+            p2++;
+        }
+        if (dp[i] === num3) {
+            p3++;
+        }
+        if (dp[i] === num5) {
+            p5++;
+        }
+    }
+    return dp[n];
+  };
+
+
 
   return (
     <>
