@@ -2223,7 +2223,7 @@ function Result() {
   // };
 
   // 剑指 Offer 17. 打印从1到最大的n位数
-  function printNumbers(n: number): number[] {
+  // function printNumbers(n: number): number[] {
     // const res: number[] = [];
     // let max = 0;
     // for (let i = 1; i <= n; i++) {
@@ -2235,12 +2235,48 @@ function Result() {
     // }
     // return res;
 
-    const res: number[] = [];
-    for (let i = 1; i <= Math.pow(10, n); i++) {
-      res.push(i);
+    // using Math.pow API
+    // const res: number[] = [];
+    // for (let i = 1; i <= Math.pow(10, n); i++) {
+    //   res.push(i);
+    // }
+    // return res;
+  // }
+
+  // 剑指 Offer 51. 数组中的逆序对
+  function reversePairs(nums: number[]): number {
+    // 归并排序
+    let sum = 0;
+    mergeSort(nums);
+    return sum;
+
+    function mergeSort (nums: number[]):number[] {
+        if(nums.length < 2) return nums;
+        const mid = nums.length / 2;
+        let left = nums.slice(0,mid);
+        let right = nums.slice(mid);
+        return merge(mergeSort(left), mergeSort(right));
     }
-    return res;
-  }
+
+    function merge(left:number[], right:number[]){
+        let res = [];
+        let leftLen = left.length;
+        let rightLen = right.length;
+        let len = leftLen + rightLen;
+        for(let index = 0, i = 0, j = 0; index < len; index ++) {
+            if(i >= leftLen) res[index] = right[j ++];
+            else if (j >= rightLen) res[index] = left[i ++];
+            else if (left[i] <= right[j]) res[index] = left[i ++];
+            else {
+                res[index] = right[j ++];
+                sum += leftLen - i;//在归并排序中唯一加的一行代码
+            }
+        }
+        return res;
+    }
+  };
+
+
 
   return (
     <>
