@@ -2309,6 +2309,18 @@ function Result() {
     return count;
   };
 
+  //剑指 Offer 44. 数字序列中某一位的数字
+  function findNthDigit(n: number): number {
+    let i = 1;
+    while (i * Math.pow(10, i) < n) {
+      n += Math.pow(10, i);
+      i++;
+    }
+
+    const partition = Math.floor(n /i).toString();
+    return parseInt(partition[n % i]);
+  };
+
 
   return (
     <>
