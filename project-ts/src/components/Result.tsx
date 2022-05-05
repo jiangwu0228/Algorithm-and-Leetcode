@@ -2244,36 +2244,47 @@ function Result() {
   // }
 
   // 剑指 Offer 51. 数组中的逆序对
-  function reversePairs(nums: number[]): number {
-    // 归并排序
-    let sum = 0;
-    mergeSort(nums);
-    return sum;
+  // function reversePairs(nums: number[]): number {
+  //   // 归并排序
+  //   let sum = 0;
+  //   mergeSort(nums);
+  //   return sum;
 
-    function mergeSort (nums: number[]):number[] {
-        if(nums.length < 2) return nums;
-        const mid = nums.length / 2;
-        let left = nums.slice(0,mid);
-        let right = nums.slice(mid);
-        return merge(mergeSort(left), mergeSort(right));
-    }
+  //   function mergeSort (nums: number[]):number[] {
+  //       if(nums.length < 2) return nums;
+  //       const mid = nums.length / 2;
+  //       let left = nums.slice(0,mid);
+  //       let right = nums.slice(mid);
+  //       return merge(mergeSort(left), mergeSort(right));
+  //   }
 
-    function merge(left:number[], right:number[]){
-        let res = [];
-        let leftLen = left.length;
-        let rightLen = right.length;
-        let len = leftLen + rightLen;
-        for(let index = 0, i = 0, j = 0; index < len; index ++) {
-            if(i >= leftLen) res[index] = right[j ++];
-            else if (j >= rightLen) res[index] = left[i ++];
-            else if (left[i] <= right[j]) res[index] = left[i ++];
-            else {
-                res[index] = right[j ++];
-                sum += leftLen - i;//在归并排序中唯一加的一行代码
-            }
-        }
-        return res;
+  //   function merge(left:number[], right:number[]){
+  //       let res = [];
+  //       let leftLen = left.length;
+  //       let rightLen = right.length;
+  //       let len = leftLen + rightLen;
+  //       for(let index = 0, i = 0, j = 0; index < len; index ++) {
+  //           if(i >= leftLen) res[index] = right[j ++];
+  //           else if (j >= rightLen) res[index] = left[i ++];
+  //           else if (left[i] <= right[j]) res[index] = left[i ++];
+  //           else {
+  //               res[index] = right[j ++];
+  //               sum += leftLen - i;//在归并排序中唯一加的一行代码
+  //           }
+  //       }
+  //       return res;
+  //   }
+  // };
+
+  // 剑指 Offer 14- II. 剪绳子 II
+  function cuttingRope(n: number): number {
+    if (n <4) return n - 1;
+    let res = 1;
+    while (n > 4) {
+      res = res * 3 % 1000000007;
+      n = n - 3;
     }
+    return res * n % 1000000007;
   };
 
 
