@@ -2277,16 +2277,37 @@ function Result() {
   // };
 
   // 剑指 Offer 14- II. 剪绳子 II
-  function cuttingRope(n: number): number {
-    if (n <4) return n - 1;
-    let res = 1;
-    while (n > 4) {
-      res = res * 3 % 1000000007;
-      n = n - 3;
-    }
-    return res * n % 1000000007;
-  };
+  // function cuttingRope(n: number): number {
+  //   if (n <4) return n - 1;
+  //   let res = 1;
+  //   while (n > 4) {
+  //     res = res * 3 % 1000000007;
+  //     n = n - 3;
+  //   }
+  //   return res * n % 1000000007;
+  // };
 
+  //剑指 Offer 43. 1～n 整数中 1 出现的次数
+  function countDigitOne(n: number): number {
+    // 超时
+    // let count = 0;
+    // for (let i = 1; i <= n; i++) {
+    //   let num = i;
+    //   while (num > 0) {
+    //     if (num % 10 === 1) count++;
+    //     num = Math.floor(num / 10);
+    //   }
+    // }
+    // return count;
+
+    let mulk = 1;
+    let count = 0;
+    for (let k = 0; n >= mulk; ++k) {
+      count += (Math.floor(n / (mulk * 10))) * mulk + Math.min(Math.max(n % (mulk * 10)- mulk +1,0), mulk);
+      mulk *= 10;
+    }
+    return count;
+  };
 
 
   return (
