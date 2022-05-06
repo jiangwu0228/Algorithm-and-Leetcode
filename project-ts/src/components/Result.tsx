@@ -2322,11 +2322,28 @@ function Result() {
   };
 
   //237. 删除链表中的节点
-  function deleteNode(root: ListNode | null): void {
-    root.val = root.next.val;
-    root.next = root.next.next;
-  };
+  // function deleteNode(root: ListNode | null): void {
+  //   root.val = root.next.val;
+  //   root.next = root.next.next;
+  // };
 
+
+  //2006. 差的绝对值为 K 的数对数目
+  function countKDifference(nums: number[], k: number): number {
+    const map = new Map();
+    for (let i = 0; i < nums.length; i++) {
+      map.set(nums[i], i);
+    }
+    let count = 0;
+    for (let i = 0; i < nums.length; i++) {
+      for (let j = i + 1; j < nums.length; j++) {
+        if (Math.abs(nums[i] - nums[j]) === k) {
+          count++;
+        }
+      }
+    }
+    return count;
+  };
 
   return (
     <>
