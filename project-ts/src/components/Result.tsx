@@ -2321,6 +2321,12 @@ function Result() {
     return parseInt(partition[n % i]);
   };
 
+  //237. 删除链表中的节点
+  function deleteNode(root: ListNode | null): void {
+    root.val = root.next.val;
+    root.next = root.next.next;
+  };
+
 
   return (
     <>
