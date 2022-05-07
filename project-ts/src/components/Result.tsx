@@ -2224,23 +2224,23 @@ function Result() {
 
   // 剑指 Offer 17. 打印从1到最大的n位数
   // function printNumbers(n: number): number[] {
-    // const res: number[] = [];
-    // let max = 0;
-    // for (let i = 1; i <= n; i++) {
-    //   max *= 10;
-    //   max += 9;
-    // }
-    // for (let i = 1; i <= max; i++) {
-    //   res.push(i);
-    // }
-    // return res;
+  // const res: number[] = [];
+  // let max = 0;
+  // for (let i = 1; i <= n; i++) {
+  //   max *= 10;
+  //   max += 9;
+  // }
+  // for (let i = 1; i <= max; i++) {
+  //   res.push(i);
+  // }
+  // return res;
 
-    // using Math.pow API
-    // const res: number[] = [];
-    // for (let i = 1; i <= Math.pow(10, n); i++) {
-    //   res.push(i);
-    // }
-    // return res;
+  // using Math.pow API
+  // const res: number[] = [];
+  // for (let i = 1; i <= Math.pow(10, n); i++) {
+  //   res.push(i);
+  // }
+  // return res;
   // }
 
   // 剑指 Offer 51. 数组中的逆序对
@@ -2303,11 +2303,13 @@ function Result() {
     let mulk = 1;
     let count = 0;
     for (let k = 0; n >= mulk; ++k) {
-      count += (Math.floor(n / (mulk * 10))) * mulk + Math.min(Math.max(n % (mulk * 10)- mulk +1,0), mulk);
+      count +=
+        Math.floor(n / (mulk * 10)) * mulk +
+        Math.min(Math.max((n % (mulk * 10)) - mulk + 1, 0), mulk);
       mulk *= 10;
     }
     return count;
-  };
+  }
 
   //剑指 Offer 44. 数字序列中某一位的数字
   function findNthDigit(n: number): number {
@@ -2317,9 +2319,9 @@ function Result() {
       i++;
     }
 
-    const partition = Math.floor(n /i).toString();
+    const partition = Math.floor(n / i).toString();
     return parseInt(partition[n % i]);
-  };
+  }
 
   //237. 删除链表中的节点
   // function deleteNode(root: ListNode | null): void {
@@ -2327,23 +2329,35 @@ function Result() {
   //   root.next = root.next.next;
   // };
 
-
   //2006. 差的绝对值为 K 的数对数目
-  function countKDifference(nums: number[], k: number): number {
-    const map = new Map();
-    for (let i = 0; i < nums.length; i++) {
-      map.set(nums[i], i);
-    }
-    let count = 0;
-    for (let i = 0; i < nums.length; i++) {
-      for (let j = i + 1; j < nums.length; j++) {
-        if (Math.abs(nums[i] - nums[j]) === k) {
-          count++;
-        }
-      }
-    }
-    return count;
-  };
+  // function countKDifference(nums: number[], k: number): number {
+  //   const map = new Map();
+  //   for (let i = 0; i < nums.length; i++) {
+  //     map.set(nums[i], i);
+  //   }
+  //   let count = 0;
+  //   for (let i = 0; i < nums.length; i++) {
+  //     for (let j = i + 1; j < nums.length; j++) {
+  //       if (Math.abs(nums[i] - nums[j]) === k) {
+  //         count++;
+  //       }
+  //     }
+  //   }
+  //   return count;
+  // };
+
+  // 2160. 拆分数位后四位数字的最小和
+  // function minimumSum(num: number): number {
+  //   const arr = (num + '').split('').filter(item => item !== '0')
+  //   let m1 = ''
+  //   let m2 = ''
+  //   arr.sort((a, b) => a - b)
+  //   for (let i = 0; i < arr.length; i += 2) {
+  //     m1 += arr[i]
+  //     if (arr[i + 1]) m2 += arr[i + 1]
+  //   }
+  //   return m1 * 1 + m2 * 1
+  // }
 
   return (
     <>
