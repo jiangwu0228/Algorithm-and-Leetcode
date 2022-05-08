@@ -23,3 +23,17 @@ WHERE Customers.id NOT IN
 
 -- 1873. 计算特殊奖金
 SELECT employee_id, if(employee_id % 2 = 0 OR name like 'M%', 0, salary) as bonus FROM Employees;
+
+
+-- 627. 变更性别
+
+UPDATE salary
+SET
+    sex = CASE sex
+        WHEN 'm' THEN 'f'
+        ELSE 'm'
+    END;
+
+UPDATE salary
+SET
+    sex = if(sex = 'm', 'f', 'm');
