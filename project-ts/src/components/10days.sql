@@ -40,3 +40,12 @@ SET
 
 -- 196. 删除重复的电子邮箱
 DELETE p1 FROM Person p1, Person p2 WHERE p1.Email = p2.Email AND p1.Id > p2.Id;
+
+-- 1667. 修复表中的名字
+
+SELECT user_id AS 'user_id', 
+CONCAT(
+    UPPER(LEFT(name,1)),
+    LOWER(RIGHT(name,length(name)-1))) AS 'name'
+FROM Users 
+ORDER BY user_id;
