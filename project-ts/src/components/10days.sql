@@ -133,3 +133,13 @@ where
         and p_id is not null
 
 order by id;
+
+-- 176. 第二高的薪水
+
+select
+    (select distinct
+        salary
+    from
+        employee
+    order by salary desc
+    limit 1 offset 1) as SecondHighestSalary;
