@@ -67,3 +67,15 @@ ORDER BY
 
 SELECT * FROM PATIENTS
 WHERE CONDITIONS REGEXP '^DIAB1|\\sDIAB1';
+
+-- 1965. 丢失信息的雇员
+
+SELECT employee_id FROM
+(
+    SELECT employee_id FROM Employees
+    UNION ALL
+    SELECT employee_id FROM Salaries
+) AS ans
+GROUP BY employee_id
+HAVING COUNT(employee_id) = 1
+ORDER BY employee_id;
