@@ -149,3 +149,14 @@ select
 select FirstName, LastName, City, State
 from Person left join Address
 on Person.PersonId = Address.PersonId;
+
+-- 1581. 进店却未进行过交易的顾客
+
+select customer_id, count(customer_id) as count_no_trans
+from Visits
+where visit_id not in (
+    select visit_id
+    from Transactions
+    group by visit_id
+)
+group by customer_id;
