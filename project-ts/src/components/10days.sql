@@ -143,3 +143,9 @@ select
         employee
     order by salary desc
     limit 1 offset 1) as SecondHighestSalary;
+
+-- 175. 组合两个表
+
+select FirstName, LastName, City, State
+from Person left join Address
+on Person.PersonId = Address.PersonId;
