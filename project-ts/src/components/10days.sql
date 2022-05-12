@@ -174,3 +174,21 @@ SELECT w2.Id
 FROM Weather w1, Weather w2
 WHERE DATEDIFF(w2.RecordDate, w1.RecordDate) = 1
 AND w1.Temperature < w2.Temperature
+
+-- 607. 销售员
+
+SELECT 
+    name
+FROM
+    salesperson
+WHERE 
+    sales_id not in (
+SELECT
+    o.sales_id
+FROM
+    orders o
+LEFT JOIN
+    company c ON o.com_id = c.com_id
+WHERE
+    c.name = 'RED'
+);
