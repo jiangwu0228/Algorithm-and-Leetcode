@@ -167,3 +167,10 @@ select distinct author_id as id
 from Views
 where author_id = viewer_id
 order by author_id;
+
+-- 197. 上升的温度
+
+SELECT w2.Id
+FROM Weather w1, Weather w2
+WHERE DATEDIFF(w2.RecordDate, w1.RecordDate) = 1
+AND w1.Temperature < w2.Temperature
