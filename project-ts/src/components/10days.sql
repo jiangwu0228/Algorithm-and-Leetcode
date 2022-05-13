@@ -199,3 +199,12 @@ select activity_date day, count(distinct user_id) active_users
 from activity
 where datediff('2019-07-27', activity_date) >= 0 AND datediff('2019-07-27', activity_date) <30
 group by activity_date
+
+
+-- 1693. 每天的领导和合伙人
+
+select date_id,make_name,count(DISTINCT lead_id) as unique_leads,
+                         count(DISTINCT partner_id) as unique_partners 
+from DailySales
+group by date_id,make_name
+order by date_id
