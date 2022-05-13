@@ -208,3 +208,12 @@ select date_id,make_name,count(DISTINCT lead_id) as unique_leads,
 from DailySales
 group by date_id,make_name
 order by date_id
+
+-- 1729. 求关注者的数量
+
+select 
+    user_id, COUNT(*) followers_count
+from 
+    followers
+ group by user_id
+ order by user_id;
