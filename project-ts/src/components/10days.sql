@@ -217,3 +217,10 @@ from
     followers
  group by user_id
  order by user_id;
+
+-- 586. 订单最多的客户
+select customer_number
+from orders
+group by customer_number
+order by count(*) desc
+limit 1;
