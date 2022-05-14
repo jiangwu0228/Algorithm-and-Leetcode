@@ -231,3 +231,10 @@ select
     min(event_date) first_login
 from activity
 group by player_id;
+
+-- 1890. 2020年最后一次登录
+
+select user_id, max(time_stamp) last_stamp
+from logins
+where year(time_stamp) = 2020
+group by user_id;
