@@ -224,3 +224,10 @@ from orders
 group by customer_number
 order by count(*) desc
 limit 1;
+
+-- 511. 游戏玩法分析 I
+select 
+    player_id,
+    min(event_date) first_login
+from activity
+group by player_id;
