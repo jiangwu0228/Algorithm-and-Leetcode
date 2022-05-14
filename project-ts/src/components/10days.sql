@@ -238,3 +238,8 @@ select user_id, max(time_stamp) last_stamp
 from logins
 where year(time_stamp) = 2020
 group by user_id;
+
+-- 1741. 查找每个员工花费的总时间
+select event_day as day, emp_id, sum(out_time-in_time) as total_time
+from Employees
+group by emp_id, event_day
