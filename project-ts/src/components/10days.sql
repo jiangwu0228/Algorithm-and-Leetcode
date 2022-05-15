@@ -243,3 +243,13 @@ group by user_id;
 select event_day as day, emp_id, sum(out_time-in_time) as total_time
 from Employees
 group by emp_id, event_day
+
+-- 1393. 股票的资本损益
+select stock_name,
+    sum(
+        case operation when 'sell' # 卖出
+        then price else -price #返回收益，
+        end
+    ) as capital_gain_loss
+from stock
+group by stock_name;
